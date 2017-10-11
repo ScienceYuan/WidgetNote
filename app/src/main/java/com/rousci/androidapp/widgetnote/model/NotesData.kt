@@ -9,21 +9,24 @@ import org.jetbrains.anko.db.*
  *
  * database must init
  * but the expect of null database is still not deal with
+ *
+ * use a tick of closure
+ * let the pointer of database can not be change
  */
 
+var getDatabase: () -> NotesDatabaseHelper? = {null}
 
-var database: NotesDatabaseHelper? = null
-
-fun setdatabse(context: Context): Boolean {
-    database = NotesDatabaseHelper(context)
+fun setDatabase(context: Context): Boolean {
+    val database: NotesDatabaseHelper? = NotesDatabaseHelper(context)
+    getDatabase = {database}
     return true
 }
 
 fun queryAll(): List<String> {
-    val data =  database!!.readableDatabase.select(noteTableName, contentName).parseList(classParser<String>())
+    val data =  getDatabase()!!.readableDatabase.select(noteTableName, contentName).parseList(classParser<String>())
     return data
 }
 
 fun insert(content: String){
-    database!!.writableDatabase.insert(noteTableName, contentName to content)
+    getDatabase()!!.writableDatabase.insert(noteTableName, contentName to content)
 }
