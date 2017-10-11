@@ -2,6 +2,8 @@ package com.rousci.androidapp.widgetnote.view.mainActicity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.Button
 import com.rousci.androidapp.widgetnote.R
@@ -15,7 +17,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         setDatabase(applicationContext)
+        val dataSet = queryAll()
+        val recycleView = find<RecyclerView>(R.id.recycleView1)
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.orientation = LinearLayoutManager.VERTICAL
+        recycleView.layoutManager = layoutManager
+        recycleView.adapter = StringRecycleAdapter(dataSet, this)
     }
 
 }
