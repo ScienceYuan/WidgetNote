@@ -2,8 +2,8 @@ package com.rousci.androidapp.widgetnote.view.mainActicity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-
 import com.rousci.androidapp.widgetnote.R
+import com.rousci.androidapp.widgetnote.model.setdatabse
 
 class MainActivity : AppCompatActivity() {
 
