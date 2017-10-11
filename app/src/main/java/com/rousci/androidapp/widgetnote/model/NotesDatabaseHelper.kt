@@ -12,7 +12,7 @@ import org.jetbrains.anko.db.*
  * so I choose it
  */
 
-class NotesDatabaseHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Notes", null, 1) {
+class NotesDatabaseHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, databaseName, null, 1) {
 
     /*I just copy this companion object from the doc of anko
     * in fact I really do not know what is the "@Synchronized" or "instance"*/
@@ -30,15 +30,15 @@ class NotesDatabaseHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "Notes", 
 
     override fun onCreate(dataBase: SQLiteDatabase) {
         dataBase.createTable(
-                "note_table",
+                noteTableName,
                 true,
-                "id" to INTEGER + PRIMARY_KEY + AUTOINCREMENT + UNIQUE,
-                "content" to TEXT + NOT_NULL
+                idName to INTEGER + PRIMARY_KEY + AUTOINCREMENT + UNIQUE,
+                contentName to TEXT + NOT_NULL
         )
     }
 
     override fun onUpgrade(dataBase: SQLiteDatabase, p1: Int, p2: Int) {
-        dataBase.dropTable("note_table", true)
+        dataBase.dropTable(noteTableName, true)
     }
 
 }

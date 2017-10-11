@@ -19,10 +19,11 @@ fun setdatabse(context: Context): Boolean {
     return true
 }
 
-fun queryAll(){
-    database!!.readableDatabase.select("notes_table", "content").parseList(classParser<String>())
+fun queryAll(): List<String> {
+    val data =  database!!.readableDatabase.select(noteTableName, contentName).parseList(classParser<String>())
+    return data
 }
 
 fun insert(content: String){
-    database!!.writableDatabase.insert("notes_table", "content" to content)
+    database!!.writableDatabase.insert(noteTableName, contentName to content)
 }
