@@ -16,9 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setDatabase(applicationContext)
-        val button = find<Button>(R.id.button)
-        button.onClick {
-            Log.i("test", queryAll().toString())
-        }
     }
+
 }
