@@ -2,6 +2,7 @@ package com.rousci.androidapp.widgetnote.view.mainActicity
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -19,7 +20,7 @@ class StringRecycleAdapter(val data:List<String>, val context: Context): Recycle
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): StrViewHolder {
-        val view:View = View.inflate(context, R.layout.item, null)
+        val view:View = LayoutInflater.from(context).inflate(R.layout.item, parent, false)
         return StrViewHolder(view)
     }
 

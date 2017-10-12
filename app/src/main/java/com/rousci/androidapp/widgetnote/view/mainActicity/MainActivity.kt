@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.Button
 import com.rousci.androidapp.widgetnote.R
+import com.rousci.androidapp.widgetnote.model.insert
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
 import org.jetbrains.anko.find
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         setDatabase(applicationContext)
         val dataSet = queryAll()
-        val recycleView = find<RecyclerView>(R.id.recycleView1)
+        val recycleView:RecyclerView = find<RecyclerView>(R.id.recycleView1)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recycleView.layoutManager = layoutManager
