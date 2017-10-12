@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.widget.Button
 import com.rousci.androidapp.widgetnote.R
@@ -26,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recycleView.layoutManager = layoutManager
         recycleView.adapter = StringRecycleAdapter(dataSet, this)
+
+        val toolbar = find<Toolbar>(R.id.toolbar)
+
     }
 
 }
