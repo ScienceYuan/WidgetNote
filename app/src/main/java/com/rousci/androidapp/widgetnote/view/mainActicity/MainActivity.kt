@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         setDatabase(applicationContext)
         val dataSet = queryAll()
-        val recycleView:RecyclerView = find<RecyclerView>(R.id.recycleView1)
+        val recycleView = find<RecyclerView>(R.id.recycleView)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recycleView.layoutManager = layoutManager
