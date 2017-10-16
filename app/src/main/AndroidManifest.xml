@@ -19,7 +19,8 @@
         <activity
             android:name=".view.mainActicity.Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".view.addNote.addNote"></activity>
     </application>
 
 </manifest>
