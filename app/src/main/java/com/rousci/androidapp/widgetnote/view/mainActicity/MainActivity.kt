@@ -8,10 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
-import android.util.Log
-import android.widget.Button
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.model.query
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
 import com.rousci.androidapp.widgetnote.view.addNote.addNote

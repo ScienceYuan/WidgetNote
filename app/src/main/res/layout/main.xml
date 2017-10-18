@@ -50,7 +50,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_head"
-        app:menu="@menu/main"
+        app:menu="@menu/navi_main"
         android:fitsSystemWindows="true"
         >
     </android.support.design.widget.NavigationView>
