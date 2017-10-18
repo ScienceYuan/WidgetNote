@@ -27,6 +27,7 @@ class addNote : AppCompatActivity() {
         floatingActionButton.setOnClickListener {
             insert(editText1.text.toString())
             startActivity<MainActivity>()
+            finish()
         }
     }
 }

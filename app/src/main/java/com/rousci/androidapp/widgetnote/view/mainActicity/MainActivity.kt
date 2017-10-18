@@ -8,8 +8,10 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.widget.Button
 import com.rousci.androidapp.widgetnote.R
+import com.rousci.androidapp.widgetnote.model.query
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
 import com.rousci.androidapp.widgetnote.view.addNote.addNote
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
 
+        setDatabase(applicationContext)
+
         val toolbar = find<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -31,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         drawer.setDrawerListener(toggle)
         toggle.syncState()
 
-        setDatabase(applicationContext)
+
         val dataSet = queryAll()
         val recycleView = find<RecyclerView>(R.id.recycleView)
         val layoutManager = LinearLayoutManager(this)
@@ -42,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         val actionButton = find<FloatingActionButton>(R.id.floatingActionButton1)
         actionButton.setOnClickListener {
             startActivity<addNote>()
+            finish()
         }
     }
 

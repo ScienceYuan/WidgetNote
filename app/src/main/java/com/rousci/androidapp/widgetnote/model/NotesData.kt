@@ -11,7 +11,7 @@ import org.jetbrains.anko.db.*
  * but the expect of null database is still not deal with
  *
  * use a tick of closure
-q * let the context of database can not be change
+ * let the context of database can not be change
  */
 
 var getDatabase: () -> NotesDatabaseHelper? = {null}
@@ -23,7 +23,15 @@ fun setDatabase(context: Context): Boolean {
 }
 
 fun queryAll(): List<String> {
-    val data =  getDatabase()!!.readableDatabase.select(noteTableName, contentName).parseList(classParser<String>())
+    val data =  getDatabase()!!.readableDatabase.select(noteTableName, contentName)
+            .parseList(classParser<String>())
+    return data
+}
+
+fun query(id: Int): String{
+    val data = getDatabase()!!.readableDatabase.select(noteTableName, contentName)
+            .whereArgs("$idName = $id")
+            .parseSingle(classParser<String>())
     return data
 }
 
