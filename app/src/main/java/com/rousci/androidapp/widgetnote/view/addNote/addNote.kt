@@ -39,5 +39,8 @@ class addNote : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem) = onOptionsItemSelectedPR(item)
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        onOptionsItemSelectedPR(item)
+        return super.onOptionsItemSelected(item)
+    }
 }

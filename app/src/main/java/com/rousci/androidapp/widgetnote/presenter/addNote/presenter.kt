@@ -1,10 +1,11 @@
 package com.rousci.androidapp.widgetnote.presenter.addNote
 
+import android.app.Activity
 import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.insert
+import com.rousci.androidapp.widgetnote.presenter.requestName
 import com.rousci.androidapp.widgetnote.view.addNote.addNote
-import com.rousci.androidapp.widgetnote.view.mainActicity.MainActivity
 
 
 /**
@@ -18,13 +19,14 @@ fun setPresenter(addNote: addNote){
     activity = addNote
 }
 
-fun onOptionsItemSelectedPR(item: MenuItem): Boolean{
+fun onOptionsItemSelectedPR(item: MenuItem?){
     val callBacks = hashMapOf(R.id.correct
             to
-            {insert(activity!!.editText1!!.text.toString())
-                activity!!.start<MainActivity>()
+            {   val data = activity!!.editText1!!.text.toString()
+                val intent = activity!!.intent
+                intent.putExtra(requestName, data)
+                activity!!.setResult(Activity.RESULT_OK,intent)
                 activity!!.finish()})
-    callBacks[item.itemId]!!()
-    return activity!!.onOptionsItemSelected(item)
+    callBacks[item!!.itemId]!!()
 }
 
