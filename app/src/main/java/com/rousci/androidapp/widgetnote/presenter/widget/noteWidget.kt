@@ -19,27 +19,35 @@ import java.util.*
 fun updateAppWidget(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?){
 
     setDatabase(context!!)
-    val lastNoteId = context!!.getSharedPreferences(lastNoteIdPre, 0).getInt("lastNoteId", -1)
+    val lastChoicedId = context.getSharedPreferences(lastNoteIdPre, 0).getInt("lastChoicedId", -1)
+    Log.i("lastChoiced", lastChoicedId.toString())
     val notes = queryAll()
     val lastIndex = notes.lastIndex
 
+
     if(lastIndex != -1){
 
-        val views = RemoteViews(context!!.packageName, R.layout.note_widget)
+        fun iter2List(iter: Iterable<Int>): List<Int> {
+            val result = mutableListOf<Int>()
+            result.addAll(iter)
+            return result.toList()
+        }
 
-        val randomIndex = fun ():Int{
-            val random = Math.abs(Random().nextInt() % (lastIndex + 1))
-            return if (random == lastNoteId){
-                val randomAdd = Random().nextInt(random)
-                (random + randomAdd) % (lastIndex + 1)
-            }
-                else{
-                random
-            }
-        }()
+        val views = RemoteViews(context.packageName, R.layout.note_widget)
 
-        val editor = context!!.getSharedPreferences(lastNoteIdPre, 0).edit()
-        editor.putInt("lastNoteId", randomIndex)
+        val indexList = iter2List(0..lastIndex)
+
+        Log.i("indexList", indexList.toString())
+        indexList.filterIndexed {index, intRange -> index != lastChoicedId}
+        val numOfIndex = indexList.lastIndex + 1
+        val random = Random()
+        val randomPositive = Math.abs(random.nextInt())
+        val choicedIndex = randomPositive % (numOfIndex)
+
+        val randomIndex = indexList[choicedIndex]
+
+        val editor = context.getSharedPreferences(lastNoteIdPre, 0).edit()
+        editor.putInt("lastChoicedId", randomIndex)
         editor.commit()
 
         for (id in appWidgetIds!!){

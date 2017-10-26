@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme"
+            android:elevation="@dimen/toolbar_elevation"/>
 
 
         <android.support.v7.widget.RecyclerView
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_margin="20dp"
+            android:layout_margin= "@dimen/fab_margin"
             android:clickable="true"
             app:fabSize="normal" />
 
