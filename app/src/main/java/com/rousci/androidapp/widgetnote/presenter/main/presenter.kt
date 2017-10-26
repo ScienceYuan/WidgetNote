@@ -13,14 +13,14 @@ import com.rousci.androidapp.widgetnote.view.mainActicity.MainActivity
  *
  * trying to make a different MVP pattern
  */
-var activity:MainActivity? = null
+var activity: MainActivity? = null
 
 fun setPresenter(mainActivity: MainActivity){
     activity = mainActivity
 }
 
 fun onActionBtnClick(){
-    val intent:Intent = Intent(activity!!.applicationContext, addNote::class.java)
+    val intent: Intent = Intent(activity!!.applicationContext, addNote::class.java)
     activity!!.start(intent, requestString)
 }
 

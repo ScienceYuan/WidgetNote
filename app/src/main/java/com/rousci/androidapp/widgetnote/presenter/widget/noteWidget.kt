@@ -25,7 +25,7 @@ fun updateAppWidget(context: Context?, appWidgetManager: AppWidgetManager?, appW
     if(lastIndex != -1){
 
         val views = RemoteViews(context!!.packageName, R.layout.note_widget)
-        val random = Random().nextInt() % (lastIndex + 1)
+        val random = Math.abs(Random().nextInt() % (lastIndex + 1))
 
         context!!.getSharedPreferences(lastNoteIdPre, 0).edit().putInt("lastNoteId", random)
 
