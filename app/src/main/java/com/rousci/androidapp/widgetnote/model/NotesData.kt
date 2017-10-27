@@ -11,7 +11,7 @@ import org.jetbrains.anko.db.*
  * but the expect of null database is still not deal with
  *
  * use a tick of closure
- * let the context of database can not be change
+ * let the appContext of database can not be change
  */
 
 var getDatabase: () -> NotesDatabaseHelper? = {null}

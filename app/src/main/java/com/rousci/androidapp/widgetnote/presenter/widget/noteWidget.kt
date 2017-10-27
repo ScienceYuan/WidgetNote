@@ -2,7 +2,6 @@ package com.rousci.androidapp.widgetnote.presenter.widget
 
 import android.appwidget.AppWidgetManager
 import android.content.Context
-import android.util.Log
 import android.widget.RemoteViews
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.lastNoteIdPre
@@ -20,7 +19,6 @@ fun updateAppWidget(context: Context?, appWidgetManager: AppWidgetManager?, appW
 
     setDatabase(context!!)
     val lastChoicedId = context.getSharedPreferences(lastNoteIdPre, 0).getInt("lastChoicedId", -1)
-    Log.i("lastChoiced", lastChoicedId.toString())
     val notes = queryAll()
     val lastIndex = notes.lastIndex
 
@@ -36,8 +34,6 @@ fun updateAppWidget(context: Context?, appWidgetManager: AppWidgetManager?, appW
         val views = RemoteViews(context.packageName, R.layout.note_widget)
 
         val indexList = iter2List(0..lastIndex)
-
-        Log.i("indexList", indexList.toString())
         indexList.filterIndexed {index, intRange -> index != lastChoicedId}
         val numOfIndex = indexList.lastIndex + 1
         val random = Random()

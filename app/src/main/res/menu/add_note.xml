@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/correct"
-        android:icon="?android:attr/actionModePasteDrawable"
-        android:title="correct"
+        android:title="@string/save"
         app:showAsAction="always"/>
 </menu>

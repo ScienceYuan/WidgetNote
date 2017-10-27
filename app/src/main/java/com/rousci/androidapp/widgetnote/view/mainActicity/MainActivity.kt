@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     var drawer:DrawerLayout? = null
     var actionButton:FloatingActionButton? = null
     val dataSet = mutableListOf<String>()
-    fun start(intent: Intent, requestCode:Int) = startActivityForResult(intent, requestCode)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

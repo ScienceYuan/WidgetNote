@@ -35,7 +35,7 @@ class addNote : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.correct, menu)
+        menuInflater.inflate(R.menu.add_note, menu)
         return super.onCreateOptionsMenu(menu)
     }
 

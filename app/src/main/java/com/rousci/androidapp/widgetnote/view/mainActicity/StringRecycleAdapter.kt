@@ -5,26 +5,34 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import com.rousci.androidapp.widgetnote.R
+import com.rousci.androidapp.widgetnote.view.editNote.EditNote
+import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 /**
  * Created by rousci on 17-10-11.
  * customize a adapter
  */
-class StringRecycleAdapter(val data:List<String>, val context: Context): RecyclerView.Adapter<StringRecycleAdapter.StrViewHolder>() {
+class StringRecycleAdapter(val data:List<String>, val appContext: Context): RecyclerView.Adapter<StringRecycleAdapter.StrViewHolder>() {
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: StrViewHolder, position: Int) {
         holder.textView.text = data[position]
+        holder.button.onClick {
+            appContext.startActivity<EditNote>()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): StrViewHolder {
-        val view:View = LayoutInflater.from(context).inflate(R.layout.item, parent, false)
+        val view:View = LayoutInflater.from(appContext).inflate(R.layout.item, parent, false)
         return StrViewHolder(view)
     }
 
     class StrViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView = itemView.findViewById(R.id.textView1)
+        val button:Button = itemView.findViewById(R.id.button1)
     }
 }
