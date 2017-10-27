@@ -15,7 +15,6 @@ import org.jetbrains.anko.startActivity
 
 class addNote : AppCompatActivity() {
 
-    var toolbar:Toolbar? = null
     var editText1:EditText? = null
 
     /**
@@ -30,7 +29,8 @@ class addNote : AppCompatActivity() {
         setContentView(R.layout.activity_add_note)
         editText1 = find<EditText>(R.id.editText1)
 
-        toolbar = find<Toolbar>(R.id.toolbar1)
+        val toolbar = find<Toolbar>(R.id.toolbar1)
+        toolbar.setTitle(R.string.addNote)
         setSupportActionBar(toolbar)
     }
 

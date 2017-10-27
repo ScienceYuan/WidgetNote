@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
+import com.rousci.androidapp.widgetnote.presenter.main.StringRecycleAdapter
 import com.rousci.androidapp.widgetnote.presenter.main.onActionBtnClick
 import com.rousci.androidapp.widgetnote.presenter.main.onActivityResultPR
 import com.rousci.androidapp.widgetnote.presenter.main.setPresenter
@@ -23,6 +24,12 @@ class MainActivity : AppCompatActivity() {
     var drawer:DrawerLayout? = null
     var actionButton:FloatingActionButton? = null
     val dataSet = mutableListOf<String>()
+
+    fun updateRecycleView(){
+        dataSet.clear()
+        dataSet.addAll(queryAll())
+        recycleView!!.adapter.notifyDataSetChanged()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,13 +48,12 @@ class MainActivity : AppCompatActivity() {
         drawer!!.setDrawerListener(toggle)
         toggle.syncState()
 
-        dataSet.clear()
-        dataSet.addAll(queryAll())
         recycleView = find<RecyclerView>(R.id.recycleView)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recycleView!!.layoutManager = layoutManager
         recycleView!!.adapter = StringRecycleAdapter(dataSet, this)
+        updateRecycleView()
 
         actionButton = find<FloatingActionButton>(R.id.floatingActionButton1)
         actionButton!!.setOnClickListener {

@@ -5,4 +5,4 @@ package com.rousci.androidapp.widgetnote.view
  * use to pass data between activities
  */
 
-val dataId = "id"
+val notePosition = "id"

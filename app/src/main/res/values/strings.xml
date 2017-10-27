@@ -11,4 +11,7 @@
 
     <string name="del">删除</string>
     <string name="save">保存</string>
+
+    <string name="addNote">添加便签</string>
+    <string name="editNote">编辑便签</string>
 </resources>

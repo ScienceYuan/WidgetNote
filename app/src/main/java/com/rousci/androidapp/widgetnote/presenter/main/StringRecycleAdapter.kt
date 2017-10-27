@@ -1,4 +1,4 @@
-package com.rousci.androidapp.widgetnote.view.mainActicity
+package com.rousci.androidapp.widgetnote.presenter.main
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.rousci.androidapp.widgetnote.R
+import com.rousci.androidapp.widgetnote.view.notePosition
 import com.rousci.androidapp.widgetnote.view.editNote.EditNote
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity
@@ -22,7 +23,7 @@ class StringRecycleAdapter(val data:List<String>, val appContext: Context): Recy
     override fun onBindViewHolder(holder: StrViewHolder, position: Int) {
         holder.textView.text = data[position]
         holder.button.onClick {
-            appContext.startActivity<EditNote>()
+            appContext.startActivity<EditNote>(notePosition to position)
         }
     }
 
