@@ -1,4 +1,4 @@
-package com.rousci.androidapp.widgetnote.presenter.widget
+package com.rousci.androidapp.widgetnote.viewPresent.widget
 
 import android.appwidget.AppWidgetManager
 import android.content.Context

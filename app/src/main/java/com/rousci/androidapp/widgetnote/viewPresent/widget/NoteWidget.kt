@@ -1,10 +1,8 @@
-package com.rousci.androidapp.widgetnote.view.widget
+package com.rousci.androidapp.widgetnote.viewPresent.widget
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
-import com.rousci.androidapp.widgetnote.model.setDatabase
-import com.rousci.androidapp.widgetnote.presenter.widget.updateAppWidget
 
 /**
  * Implementation of App Widget functionality.

@@ -1,11 +1,9 @@
-package com.rousci.androidapp.widgetnote.presenter.addNote
+package com.rousci.androidapp.widgetnote.viewPresent.addNote
 
 import android.app.Activity
 import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.presenter.passString
-import com.rousci.androidapp.widgetnote.view.addNote.addNote
-
+import com.rousci.androidapp.widgetnote.viewPresent.passString
 
 /**
  * Created by rousci on 17-10-23.
@@ -22,7 +20,7 @@ fun setPresenter(addNote: addNote){
 }
 
 fun onOptionsItemSelectedPR(item: MenuItem?){
-    val callBacks = hashMapOf(R.id.correct
+    val callBacks = mapOf(R.id.correct
             to
             {   val data = activity!!.editText1!!.text.toString()
                 val intent = activity!!.intent

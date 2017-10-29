@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Translucent">
-        <activity android:name=".view.mainActicity.MainActivity">
+        <activity android:name=".viewPresent.mainActicity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,10 +17,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.addNote.addNote"
+            android:name=".viewPresent.addNote.addNote"
             android:theme="@style/notTranslucent" />
 
-        <receiver android:name=".view.widget.NoteWidget">
+        <receiver android:name=".viewPresent.widget.NoteWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -31,7 +31,7 @@
         </receiver>
 
         <activity
-            android:name=".view.editNote.EditNote"
+            android:name=".viewPresent.editNote.EditNote"
             android:theme="@style/notTranslucent" />
         </application>
 

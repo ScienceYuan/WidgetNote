@@ -4,8 +4,10 @@
 
     <item
         android:title="@string/save"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:id="@+id/save"/>
     <item
         android:title="@string/del"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:id="@+id/del"/>
 </menu>

@@ -1,4 +1,4 @@
-package com.rousci.androidapp.widgetnote.presenter.main
+package com.rousci.androidapp.widgetnote.viewPresent.mainActicity
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.view.notePosition
-import com.rousci.androidapp.widgetnote.view.editNote.EditNote
+import com.rousci.androidapp.widgetnote.viewPresent.notePosition
+import com.rousci.androidapp.widgetnote.viewPresent.editNote.EditNote
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity
 

@@ -6,7 +6,7 @@ import org.jetbrains.anko.db.*
 
 /**
  * Created by rousci on 17-10-11.
- * a standard anko database
+ * a standard anko databasePointer
  * anko is simple to use
  * I do not not want to dear with complex api of tools
  * so I choose it

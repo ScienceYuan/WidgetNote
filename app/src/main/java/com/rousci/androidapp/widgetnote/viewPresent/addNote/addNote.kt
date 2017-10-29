@@ -1,6 +1,5 @@
-package com.rousci.androidapp.widgetnote.view.addNote
+package com.rousci.androidapp.widgetnote.viewPresent.addNote
 
-import android.app.Activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
@@ -8,10 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.presenter.addNote.onOptionsItemSelectedPR
-import com.rousci.androidapp.widgetnote.presenter.addNote.setPresenter
 import org.jetbrains.anko.find
-import org.jetbrains.anko.startActivity
 
 class addNote : AppCompatActivity() {
 
@@ -20,7 +16,6 @@ class addNote : AppCompatActivity() {
     /**
     * I do not know why it looks like this
     * */
-    inline fun <reified T : Activity> start() = startActivity<T>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,4 +1,4 @@
-package com.rousci.androidapp.widgetnote.view.mainActicity
+package com.rousci.androidapp.widgetnote.viewPresent.mainActicity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -11,10 +11,6 @@ import android.support.v7.widget.Toolbar
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
-import com.rousci.androidapp.widgetnote.presenter.main.StringRecycleAdapter
-import com.rousci.androidapp.widgetnote.presenter.main.onActionBtnClick
-import com.rousci.androidapp.widgetnote.presenter.main.onActivityResultPR
-import com.rousci.androidapp.widgetnote.presenter.main.setPresenter
 import org.jetbrains.anko.find
 
 class MainActivity : AppCompatActivity() {
@@ -62,8 +58,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        onActivityResultPR(requestCode, resultCode,data)
+        onActivityResultPR(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onStart() {
+        onStartPR()
+        super.onStart()
     }
 
 }
