@@ -60,5 +60,6 @@ fun onNavigationItemSelectedPR(item: MenuItem): Boolean {
                 alertDialog.setPositiveButton(R.string.sure, null)
                 alertDialog.show()
             })
+    callBacks[item.itemId]!!()
     return true
 }

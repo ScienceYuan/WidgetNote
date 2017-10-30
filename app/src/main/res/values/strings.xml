@@ -16,7 +16,7 @@
     <string name="editNote">编辑便签</string>
 
     <string name="about">关于</string>
-    <string name="about_content">WidgetNote由\n githubID:roundscience开发，由MIT协议分发</string>
+    <string name="about_content">WidgetNote由\ngithubID:roundscience开发\n由MIT协议分发</string>
     <string name="setting">配置</string>
 
     <string name="nav_title">WidgetNote</string>
