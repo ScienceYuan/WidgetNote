@@ -21,6 +21,7 @@ import org.jetbrains.anko.toast
  *
  * trying to make a different MVP pattern
  */
+
 var getContext: () -> MainActivity = {null!!}
 
 fun setPresenter(mainActivity: MainActivity){

@@ -19,6 +19,7 @@ class AddNote : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setPresenter(this)
 
         setContentView(R.layout.activity_add_note)

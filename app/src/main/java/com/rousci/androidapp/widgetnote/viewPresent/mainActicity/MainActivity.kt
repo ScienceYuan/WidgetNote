@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.main)
 
         setPresenter(this)
-        setDatabase(applicationContext)
+        setDatabase(this)
 
         toolbar = find<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
