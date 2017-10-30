@@ -12,5 +12,6 @@
         android:layout_height="200dp"
         android:text="@string/nav_title"
         android:textAlignment="center"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="@color/white"/>
 </LinearLayout>

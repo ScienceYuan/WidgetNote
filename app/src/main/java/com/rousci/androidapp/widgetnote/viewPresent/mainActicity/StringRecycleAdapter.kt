@@ -28,7 +28,7 @@ class StringRecycleAdapter(val data:List<String>, val appContext: Context): Recy
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): StrViewHolder {
-        val view:View = LayoutInflater.from(appContext).inflate(R.layout.item, parent, false)
+        val view:View = LayoutInflater.from(appContext).inflate(R.layout.note_item, parent, false)
         return StrViewHolder(view)
     }
 

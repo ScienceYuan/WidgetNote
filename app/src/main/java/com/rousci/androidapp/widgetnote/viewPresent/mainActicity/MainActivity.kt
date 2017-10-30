@@ -14,7 +14,6 @@ import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
 import org.jetbrains.anko.find
-import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -74,12 +73,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
-        val callBacks = mapOf(
-                R.id.setting to {toast("setting")},
-                R.id.about to {toast("about")})
-
-        callBacks[item.itemId]!!()
-        return true
+        return onNavigationItemSelectedPR(item)
     }
 }
