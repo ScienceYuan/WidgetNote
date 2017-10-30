@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".viewPresent.addNote.addNote"
+            android:name=".viewPresent.addNote.AddNote"
             android:theme="@style/notTranslucent" />
 
         <receiver android:name=".viewPresent.widget.NoteWidget">

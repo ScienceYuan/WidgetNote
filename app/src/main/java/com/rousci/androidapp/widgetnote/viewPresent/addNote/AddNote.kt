@@ -9,7 +9,7 @@ import android.widget.EditText
 import com.rousci.androidapp.widgetnote.R
 import org.jetbrains.anko.find
 
-class addNote : AppCompatActivity() {
+class AddNote : AppCompatActivity() {
 
     var editText1:EditText? = null
 

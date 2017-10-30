@@ -12,8 +12,8 @@
     <string name="del">删除</string>
     <string name="save">保存</string>
 
-    <string name="addNote">添加便签</string>
-    <string name="editNote">编辑便签</string>
+    <string name="addNote">添加标签</string>
+    <string name="editNote">编辑标签</string>
 
     <string name="about">关于</string>
     <string name="about_content">WidgetNote由\ngithubID:roundscience开发\n由MIT协议分发</string>

@@ -5,11 +5,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresent.notePosition
 import com.rousci.androidapp.widgetnote.viewPresent.editNote.EditNote
+import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import org.jetbrains.anko.startActivity
 
@@ -33,7 +34,7 @@ class StringRecycleAdapter(val data:List<String>, val appContext: Context): Recy
     }
 
     class StrViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.findViewById(R.id.textView1)
-        val button:Button = itemView.findViewById(R.id.button1)
+        val textView = itemView.find<TextView>(R.id.textView1)
+        val button = itemView.find<ImageButton>(R.id.button1)
     }
 }

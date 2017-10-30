@@ -18,4 +18,6 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
 
     <dimen name="toolbar_elevation">5dp</dimen>
     <dimen name="text_view_padding">5dp</dimen>
+
+    <dimen name="imagine_button_margin">10dp</dimen>
 </resources>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title = "@string/setting"
-        android:id="@+id/setting"/>
-    <item android:title="@string/about"
-        android:id="@+id/about"/>
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="@string/setting" />
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="@string/about" />
 </menu>
