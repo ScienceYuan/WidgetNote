@@ -3,17 +3,20 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
+import android.support.design.widget.NavigationView
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
+import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     var recycleView: RecyclerView? = null
     var toolbar:Toolbar? = null
@@ -44,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         drawer!!.setDrawerListener(toggle)
         toggle.syncState()
 
+        val navView = find<NavigationView>(R.id.nav_view)
+        navView.setNavigationItemSelectedListener(this)
+
         recycleView = find<RecyclerView>(R.id.recycleView)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -67,4 +73,13 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        val callBacks = mapOf(
+                R.id.setting to {toast("setting")},
+                R.id.about to {toast("about")})
+
+        callBacks[item.itemId]!!()
+        return true
+    }
 }

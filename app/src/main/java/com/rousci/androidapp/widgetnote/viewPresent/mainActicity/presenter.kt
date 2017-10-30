@@ -14,6 +14,7 @@ import org.jetbrains.anko.startActivityForResult
  *
  * trying to make a different MVP pattern
  */
+
 var activity: MainActivity? = null
 
 fun setPresenter(mainActivity: MainActivity){
