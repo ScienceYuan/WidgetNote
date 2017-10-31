@@ -13,9 +13,3 @@ val databaseName = "WidgetNoteDatabase"
 val noteTableName = "noteTable"
 val idName = "id"
 val contentName = "content"
-
-/*
-* for preference
-* */
-
-val lastNoteIdPre = "lastNote"

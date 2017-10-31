@@ -53,3 +53,5 @@ repositories {
     mavenCentral()
     google()
 }
+
+apply plugin: 'kotlin-android-extensions'

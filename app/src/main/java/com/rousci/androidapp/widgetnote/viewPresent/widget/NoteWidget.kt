@@ -9,7 +9,7 @@ import android.content.Context
  */
 class NoteWidget : AppWidgetProvider() {
 
-    override fun onUpdate(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
+    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         updateAppWidget(context, appWidgetManager, appWidgetIds)
         super.onUpdate(context, appWidgetManager, appWidgetIds)
     }

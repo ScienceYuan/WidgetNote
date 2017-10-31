@@ -33,6 +33,7 @@
         <activity
             android:name=".viewPresent.editNote.EditNote"
             android:theme="@style/notTranslucent" />
-        </application>
+        <activity android:name=".viewPresent.setting.setting"></activity>
+    </application>
 
 </manifest>

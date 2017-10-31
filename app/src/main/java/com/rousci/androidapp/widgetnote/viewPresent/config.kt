@@ -8,3 +8,8 @@ package com.rousci.androidapp.widgetnote.viewPresent
 val notePosition = "position"
 val stringRequest = 1
 val passString = "String"
+
+val singleDataPreference = "lastNote"
+val lastChoicedNote = "lastChoicedNote"
+
+val frequency = "frequency"
