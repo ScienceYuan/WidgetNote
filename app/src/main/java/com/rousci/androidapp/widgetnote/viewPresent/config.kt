@@ -6,8 +6,5 @@ package com.rousci.androidapp.widgetnote.viewPresent
  * to replace the flag word by val
  */
 val notePosition = "position"
-
 val stringRequest = 1
-val modifyRequest = 2
-
 val passString = "String"
