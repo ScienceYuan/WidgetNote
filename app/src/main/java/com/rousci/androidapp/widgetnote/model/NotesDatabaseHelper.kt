@@ -14,8 +14,10 @@ import org.jetbrains.anko.db.*
 
 class NotesDatabaseHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, databaseName, null, 1) {
 
-    /*I just copy this companion object from the doc of anko
-    * in fact I really do not know what is the "@Synchronized" or "instance"*/
+ /* 
+  * A static synchronized method for thread safe access
+  * which returns a single instance of NotesDatabaseHelper
+  */
     companion object {
         private var instance: NotesDatabaseHelper? = null
 
