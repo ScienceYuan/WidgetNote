@@ -41,6 +41,7 @@ class NotesDatabaseHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, databaseN
 
     override fun onUpgrade(dataBase: SQLiteDatabase, p1: Int, p2: Int) {
         dataBase.dropTable(noteTableName, true)
+        onCreate(db)
     }
 
 }
