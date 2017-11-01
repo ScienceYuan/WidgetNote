@@ -7,7 +7,7 @@ package com.rousci.androidapp.widgetnote.model
  */
 
 /*
-* replace string by value
+* contstant to construct databse and table
 * */
 val databaseName = "WidgetNoteDatabase"
 val noteTableName = "noteTable"
