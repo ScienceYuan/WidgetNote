@@ -19,9 +19,8 @@ fun onItemSelectPR(item: MenuItem){
     val text = getContext().editText!!.text.toString()
 
     val callBacks = mapOf(
-            R.id.save to {
-                update(getContext().dataSelect, text)
-                getContext().finish()
+            R.id.recovery to {
+                getContext().editText!!.setText(getContext().dataSelect)
             },
 
             R.id.del to {
@@ -31,4 +30,8 @@ fun onItemSelectPR(item: MenuItem){
     )
 
     callBacks[item.itemId]!!()
+}
+
+fun finishPR(){
+    update(getContext().dataSelect, getContext().editText!!.text.toString())
 }

@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/correct"
-        android:icon="@drawable/ic_save_black_24dp"
-        android:title="@string/save"
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_delete_forever_black_24dp"
+        android:title="@string/del"
         app:showAsAction="always" />
 </menu>

@@ -11,12 +11,13 @@
 
     <string name="del">删除</string>
     <string name="save">保存</string>
+    <string name="recovery">还原</string>
 
     <string name="addNote">添加标签</string>
     <string name="editNote">编辑标签</string>
 
     <string name="about">关于</string>
-    <string name="about_content">WidgetNote由\ngithubID:ScienceYuan开发\n由MIT协议分发</string>
+    <string name="about_content">WidgetNote提供一个在桌面上随机刷新文字的小部件\n由githubID:ScienceYuan开发\n由MIT协议分发</string>
     <string name="setting">配置</string>
 
     <string name="nav_title">WidgetNote</string>

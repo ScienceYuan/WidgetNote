@@ -27,6 +27,8 @@ class Setting : AppCompatActivity() {
 
         val frequency = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(frequency, defaultFrequency)
         frequencyEditor!!.setText(frequency.toString())
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun finish() {
@@ -40,7 +42,8 @@ class Setting : AppCompatActivity() {
         val frequencyEdited = frequencyEditor!!.text.toString().toInt()
         val editor = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
         editor.putInt(frequency, frequencyEdited)
-        if (getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(timeCounter, defaultFrequency) != frequencyEdited){
+        val time = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(timeCounter, defaultFrequency)
+        if (time >= frequencyEdited){
             editor.putInt(timeCounter, 0)
         }
         editor.apply()

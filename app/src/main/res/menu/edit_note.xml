@@ -3,9 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/save"
-        android:icon="@drawable/ic_save_black_24dp"
-        android:title="@string/save"
+        android:id="@+id/recovery"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        android:title="@string/recovery"
         app:showAsAction="always" />
     <item
         android:id="@+id/del"
