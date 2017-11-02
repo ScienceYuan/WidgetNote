@@ -13,3 +13,5 @@ val singleDataPreference = "lastNote"
 val lastChoicedNote = "lastChoicedNote"
 
 val frequency = "frequency"
+val timeCounter = "timeCounter"
+val defaultFrequency = 1

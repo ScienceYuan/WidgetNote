@@ -22,4 +22,7 @@
     <string name="nav_title">WidgetNote</string>
 
     <string name="sure">确定</string>
+
+    <string name="freshHour">刷新时间（小时）</string>
+    <string name="invalidFormat">数据格式不正确</string>
 </resources>

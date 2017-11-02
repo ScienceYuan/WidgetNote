@@ -8,7 +8,7 @@ import org.jetbrains.anko.db.*
  * Created by rousci on 17-10-11.
  * a standard anko databasePointer
  * anko is simple to use
- * I do not not want to dear with complex api of tools
+ * I do not want to dear with complex api of tools
  * so I choose it
  */
 
@@ -41,7 +41,7 @@ class NotesDatabaseHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, databaseN
 
     override fun onUpgrade(dataBase: SQLiteDatabase, p1: Int, p2: Int) {
         dataBase.dropTable(noteTableName, true)
-        onCreate(db)
+        onCreate(dataBase)
     }
 
 }

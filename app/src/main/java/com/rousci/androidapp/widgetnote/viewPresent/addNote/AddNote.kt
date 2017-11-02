@@ -22,7 +22,7 @@ class AddNote : AppCompatActivity() {
 
         setPresenter(this)
 
-        setContentView(R.layout.activity_add_note)
+        setContentView(R.layout.add_note)
         editText1 = find<EditText>(R.id.editText1)
 
         val toolbar = find<Toolbar>(R.id.toolbar1)

@@ -13,9 +13,7 @@ import com.rousci.androidapp.widgetnote.viewPresent.passString
  * interface: assume that activity has a property named editText1
  * and it is editable
  */
-
 var getContext: () -> AddNote = {null!!}
-
 
 fun setPresenter(addNote: AddNote){
     getContext = {addNote}
@@ -26,10 +24,9 @@ fun onOptionsItemSelectedPR(item: MenuItem?){
             to
             {
                 val data = getContext().editText1!!.text.toString()
-                val intent = getContext()!!.intent
+                val intent = getContext().intent
                 intent.putExtra(passString, data)
-                getContext()!!.setResult(Activity.RESULT_OK,intent)
-                getContext()!!.finish()})
+                getContext().setResult(Activity.RESULT_OK,intent)
+                getContext().finish()})
     callBacks[item!!.itemId]!!()
 }
-

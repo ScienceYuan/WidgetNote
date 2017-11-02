@@ -6,9 +6,7 @@ import android.widget.RemoteViews
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
-import com.rousci.androidapp.widgetnote.viewPresent.frequency
-import com.rousci.androidapp.widgetnote.viewPresent.lastChoicedNote
-import com.rousci.androidapp.widgetnote.viewPresent.singleDataPreference
+import com.rousci.androidapp.widgetnote.viewPresent.*
 import java.util.*
 
 /**
@@ -18,14 +16,22 @@ import java.util.*
  */
 
 fun updateAppWidgetOnTime(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray){
-    val frequency = context.getSharedPreferences(frequency, Context.MODE_PRIVATE)
+    val frequency = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(frequency, defaultFrequency)
+    val time = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(timeCounter, 0)
+    val editor = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
+    if(time + 1 == frequency){
+        updateAppWidget(context, appWidgetManager, appWidgetIds)
+        editor.putInt(timeCounter, 0)
+    }
+    editor.putInt(timeCounter, time + 1)
+    editor.apply()
 }
 
 fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray){
 
     setDatabase(context)
-    val lastChoicedNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, null)
-    val notes = queryAll().filter { it != lastChoicedNote }
+    val lastNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, null)
+    val notes = queryAll().filter { it != lastNote }
     val lastIndex = notes.lastIndex
 
     if(lastIndex != -1){
@@ -33,13 +39,13 @@ fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWid
 
         val random = Random()
         val randomPositive = Math.abs(random.nextInt())
-        val choicedIndex = randomPositive % (lastIndex + 1)
+        val choiceIndex = randomPositive % (lastIndex + 1)
 
-        val randomNote = notes[choicedIndex]
+        val randomNote = notes[choiceIndex]
 
-        val editor = context.getSharedPreferences(singleDataPreference, 0).edit()
-        editor.putString(com.rousci.androidapp.widgetnote.viewPresent.lastChoicedNote, randomNote)
-        editor.commit()
+        val editor = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
+        editor.putString(lastChoicedNote, randomNote)
+        editor.apply()
 
         for (id in appWidgetIds){
             views.setTextViewText(R.id.appwidget_text, randomNote)

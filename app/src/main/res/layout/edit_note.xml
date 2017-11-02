@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar2"
+        android:id="@+id/toolbar1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -17,11 +17,11 @@
         android:elevation="@dimen/toolbar_elevation"/>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/toolbar2"
+        android:layout_below="@+id/toolbar1"
         android:ems="10"
         android:gravity="start"
         android:textAlignment="textStart"

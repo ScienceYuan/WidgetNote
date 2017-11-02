@@ -20,15 +20,15 @@ class EditNote : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_note)
+        setContentView(R.layout.edit_note)
 
         setPresenter(this)
 
-        val toolBar = find<Toolbar>(R.id.toolbar2)
+        val toolBar = find<Toolbar>(R.id.toolbar1)
         toolBar.setTitle(R.string.editNote)
         setSupportActionBar(toolBar)
 
-        editText = find(R.id.editText2)
+        editText = find(R.id.editText1)
 
         val position = intent.getIntExtra(notePosition, -1)
 
