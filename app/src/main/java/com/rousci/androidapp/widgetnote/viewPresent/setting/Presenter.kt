@@ -1,7 +1,6 @@
 package com.rousci.androidapp.widgetnote.viewPresent.setting
 
 import android.content.Context
-import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresent.defaultFrequency
 import com.rousci.androidapp.widgetnote.viewPresent.frequency
@@ -19,13 +18,6 @@ fun setPresenter(setting: Setting){
 }
 
 fun finishPR(){
-    try {
-        val frequencyEdited = getContext().frequencyEditor!!.text.toString().toInt()
-    }
-    catch (e:NumberFormatException){
-        getContext().toast(R.string.invalidFormat)
-        return
-    }
     val frequencyEdited = getContext().frequencyEditor!!.text.toString().toInt()
     val editor = getContext().getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
     editor.putInt(frequency, frequencyEdited)

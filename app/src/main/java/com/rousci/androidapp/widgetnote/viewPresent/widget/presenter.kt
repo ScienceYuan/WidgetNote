@@ -21,11 +21,12 @@ fun updateAppWidgetOnTime(context: Context, appWidgetManager: AppWidgetManager, 
     val frequency = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(frequency, defaultFrequency)
     val time = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(timeCounter, 0)
     val editor = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
-    if(time + 1 == frequency){
+    Log.i("test", frequency.toString()+","+time.toString())
+    editor.putInt(timeCounter, time + 1)
+    if(time + 1 >= frequency){
         updateAppWidget(context, appWidgetManager, appWidgetIds)
         editor.putInt(timeCounter, 0)
     }
-    editor.putInt(timeCounter, time + 1)
     editor.apply()
 }
 
