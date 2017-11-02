@@ -2,11 +2,13 @@ package com.rousci.androidapp.widgetnote.viewPresent.widget
 
 import android.appwidget.AppWidgetManager
 import android.content.Context
+import android.util.Log
 import android.widget.RemoteViews
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
 import com.rousci.androidapp.widgetnote.viewPresent.*
+import org.jetbrains.anko.toast
 import java.util.*
 
 /**

@@ -9,6 +9,7 @@ import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresent.defaultFrequency
 import com.rousci.androidapp.widgetnote.viewPresent.frequency
 import com.rousci.androidapp.widgetnote.viewPresent.singleDataPreference
+import com.rousci.androidapp.widgetnote.viewPresent.timeCounter
 import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
 
@@ -39,6 +40,9 @@ class Setting : AppCompatActivity() {
         val frequencyEdited = frequencyEditor!!.text.toString().toInt()
         val editor = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
         editor.putInt(frequency, frequencyEdited)
+        if (getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(timeCounter, defaultFrequency) != frequencyEdited){
+            editor.putInt(timeCounter, 0)
+        }
         editor.apply()
         super.finish()
     }
