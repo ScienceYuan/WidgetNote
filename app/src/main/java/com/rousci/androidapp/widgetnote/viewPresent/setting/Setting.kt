@@ -4,14 +4,13 @@ import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.view.MenuItem
 import android.widget.EditText
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresent.defaultFrequency
 import com.rousci.androidapp.widgetnote.viewPresent.frequency
 import com.rousci.androidapp.widgetnote.viewPresent.singleDataPreference
-import com.rousci.androidapp.widgetnote.viewPresent.timeCounter
 import org.jetbrains.anko.find
-import org.jetbrains.anko.toast
 
 class Setting : AppCompatActivity() {
     var frequencyEditor:EditText? = null
@@ -27,26 +26,10 @@ class Setting : AppCompatActivity() {
 
         val frequency = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(frequency, defaultFrequency)
         frequencyEditor!!.setText(frequency.toString())
-
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun finish() {
-        try {
-            val frequencyEdited = frequencyEditor!!.text.toString().toInt()
-        }
-        catch (e:NumberFormatException){
-            toast(R.string.invalidFormat)
-            return
-        }
-        val frequencyEdited = frequencyEditor!!.text.toString().toInt()
-        val editor = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
-        editor.putInt(frequency, frequencyEdited)
-        val time = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(timeCounter, defaultFrequency)
-        if (time >= frequencyEdited){
-            editor.putInt(timeCounter, 0)
-        }
-        editor.apply()
+        finishPR()
         super.finish()
     }
 }

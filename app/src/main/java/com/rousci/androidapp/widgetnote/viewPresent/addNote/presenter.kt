@@ -20,9 +20,8 @@ fun setPresenter(addNote: AddNote){
 }
 
 fun onOptionsItemSelectedPR(item: MenuItem?){
-    val callBacks = mapOf(R.id.delete
-            to
-            {
+    val callBacks = mapOf(
+            R.id.delete to {
                 getContext().giveUpAndFinish()
             }
     )

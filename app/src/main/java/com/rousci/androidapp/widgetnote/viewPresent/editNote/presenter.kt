@@ -3,6 +3,7 @@ package com.rousci.androidapp.widgetnote.viewPresent.editNote
 import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.del
+
 import com.rousci.androidapp.widgetnote.model.update
 
 /**
@@ -28,7 +29,6 @@ fun onItemSelectPR(item: MenuItem){
                 getContext().finish()
             }
     )
-
     callBacks[item.itemId]!!()
 }
 

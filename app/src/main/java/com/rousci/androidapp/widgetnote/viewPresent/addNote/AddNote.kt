@@ -28,8 +28,6 @@ class AddNote : AppCompatActivity() {
         val toolbar = find<Toolbar>(R.id.toolbar1)
         toolbar.setTitle(R.string.addNote)
         setSupportActionBar(toolbar)
-
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -37,8 +37,6 @@ class EditNote : AppCompatActivity() {
         dataSelect = dataSet[position]
 
         editText!!.setText(dataSelect)
-
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
