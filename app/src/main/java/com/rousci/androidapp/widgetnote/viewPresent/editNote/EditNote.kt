@@ -27,6 +27,7 @@ class EditNote : AppCompatActivity() {
         val toolBar = find<Toolbar>(R.id.toolbar1)
         toolBar.setTitle(R.string.editNote)
         setSupportActionBar(toolBar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         editText = find(R.id.editText1)
 

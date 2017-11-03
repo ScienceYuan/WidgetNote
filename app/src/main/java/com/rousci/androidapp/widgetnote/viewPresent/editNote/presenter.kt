@@ -8,7 +8,6 @@ import com.rousci.androidapp.widgetnote.model.update
 
 /**
  * Created by rousci on 17-10-27.
- *
  */
 var getContext:() -> EditNote = {null!!}
 
@@ -17,19 +16,18 @@ fun setPresenter(editNote: EditNote){
 }
 
 fun onItemSelectPR(item: MenuItem){
-    val text = getContext().editText!!.text.toString()
-
-    val callBacks = mapOf(
-            R.id.recovery to {
-                getContext().editText!!.setText(getContext().dataSelect)
-            },
-
-            R.id.del to {
-                del(getContext().dataSelect)
-                getContext().finish()
-            }
-    )
-    callBacks[item.itemId]!!()
+    when(item.itemId){
+        R.id.recovery -> {
+            getContext().editText!!.setText(getContext().dataSelect)
+        }
+        R.id.del -> {
+            del(getContext().dataSelect)
+            getContext().finish()
+        }
+        android.R.id.home -> {
+            getContext().finish()
+        }
+    }
 }
 
 fun finishPR(){

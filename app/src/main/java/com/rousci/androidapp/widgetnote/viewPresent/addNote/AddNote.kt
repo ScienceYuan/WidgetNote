@@ -28,6 +28,7 @@ class AddNote : AppCompatActivity() {
         val toolbar = find<Toolbar>(R.id.toolbar1)
         toolbar.setTitle(R.string.addNote)
         setSupportActionBar(toolbar)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -35,7 +36,7 @@ class AddNote : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         onOptionsItemSelectedPR(item)
         return super.onOptionsItemSelected(item)
     }

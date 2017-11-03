@@ -2,13 +2,12 @@ package com.rousci.androidapp.widgetnote.viewPresent.widget
 
 import android.appwidget.AppWidgetManager
 import android.content.Context
-import android.util.Log
+import android.util.TypedValue
 import android.widget.RemoteViews
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.model.setDatabase
 import com.rousci.androidapp.widgetnote.viewPresent.*
-import org.jetbrains.anko.toast
 import java.util.*
 
 /**
@@ -21,7 +20,6 @@ fun updateAppWidgetOnTime(context: Context, appWidgetManager: AppWidgetManager, 
     val frequency = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(frequency, defaultFrequency)
     val time = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(timeCounter, 0)
     val editor = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
-    Log.i("test", frequency.toString()+","+time.toString())
     editor.putInt(timeCounter, time + 1)
     if(time + 1 >= frequency){
         updateAppWidget(context, appWidgetManager, appWidgetIds)
@@ -51,6 +49,8 @@ fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWid
         editor.apply()
 
         for (id in appWidgetIds){
+            val fontSize = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getFloat(fontSP, 18.toFloat())
+            views.setTextViewTextSize(R.id.appwidget_text, TypedValue.COMPLEX_UNIT_SP, fontSize)
             views.setTextViewText(R.id.appwidget_text, randomNote)
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(id, views)

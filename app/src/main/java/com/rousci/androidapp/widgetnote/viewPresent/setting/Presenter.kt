@@ -1,6 +1,7 @@
 package com.rousci.androidapp.widgetnote.viewPresent.setting
 
 import android.content.Context
+import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresent.defaultFrequency
 import com.rousci.androidapp.widgetnote.viewPresent.frequency
@@ -26,4 +27,12 @@ fun finishPR(){
         editor.putInt(timeCounter, 0)
     }
     editor.apply()
+}
+
+fun onOptionsItemSelectedPR(item: MenuItem){
+    when(item.itemId){
+        android.R.id.home -> {
+            getContext().finish()
+        }
+    }
 }

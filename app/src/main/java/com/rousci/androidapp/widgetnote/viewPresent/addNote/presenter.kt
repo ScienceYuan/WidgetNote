@@ -19,18 +19,22 @@ fun setPresenter(addNote: AddNote){
     getContext = {addNote}
 }
 
-fun onOptionsItemSelectedPR(item: MenuItem?){
-    val callBacks = mapOf(
-            R.id.delete to {
-                getContext().giveUpAndFinish()
-            }
-    )
-    callBacks[item!!.itemId]!!()
+fun onOptionsItemSelectedPR(item: MenuItem){
+    when(item.itemId){
+        R.id.del -> {
+            getContext().giveUpAndFinish()
+        }
+        android.R.id.home -> {
+            getContext().finish()
+        }
+    }
 }
 
 fun finishPR(){
     val data = getContext().editText1!!.text.toString()
-    val intent = getContext().intent
-    intent.putExtra(passString, data)
-    getContext().setResult(Activity.RESULT_OK,intent)
+    if(data != ""){
+        val intent = getContext().intent
+        intent.putExtra(passString, data)
+        getContext().setResult(Activity.RESULT_OK,intent)
+    }
 }

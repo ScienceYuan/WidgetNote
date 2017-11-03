@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.view.MenuItem
 import android.widget.EditText
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresent.defaultFrequency
@@ -21,7 +22,10 @@ class Setting : AppCompatActivity() {
         setPresenter(this)
 
         val toolbar = find<Toolbar>(R.id.toolbar1)
+        toolbar.setTitle(R.string.setting)
         setSupportActionBar(toolbar)
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
         frequencyEditor = findViewById(R.id.editText1)
 
@@ -37,5 +41,10 @@ class Setting : AppCompatActivity() {
         catch (e:NumberFormatException){
             toast(R.string.invalidFormat)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        onOptionsItemSelectedPR(item)
+        return super.onOptionsItemSelected(item)
     }
 }
