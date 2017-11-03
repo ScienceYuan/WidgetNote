@@ -3,6 +3,7 @@ package com.rousci.androidapp.widgetnote.viewPresent.setting
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
+import android.util.TypedValue
 import android.view.MenuItem
 import android.widget.RemoteViews
 import com.rousci.androidapp.widgetnote.R
@@ -31,6 +32,15 @@ fun finishPR(){
         editor.putInt(timeCounter, 0)
     }
     editor.apply()
+
+    val context = getContext() as Context
+    val appWidgetManager = AppWidgetManager.getInstance(context)
+    val views = RemoteViews(context.packageName, R.layout.note_widget)
+    val componentName = ComponentName(context, NoteWidget::class.java)
+    val lastNote = getContext().getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, "没有添加数据")
+    views.setTextViewText(R.id.appwidget_text, lastNote)
+    views.setTextViewTextSize(R.id.appwidget_text, TypedValue.COMPLEX_UNIT_SP ,fontEdited)
+    appWidgetManager.updateAppWidget(componentName, views)
 }
 
 fun onOptionsItemSelectedPR(item: MenuItem){
@@ -39,15 +49,4 @@ fun onOptionsItemSelectedPR(item: MenuItem){
             getContext().finish()
         }
     }
-}
-
-fun refreshWidget(){
-    val context = getContext() as Context
-    val appWidgetManager = AppWidgetManager.getInstance(context)
-    val remoteViews = RemoteViews(context.packageName, R.layout.note_widget)
-    val noteWidget = ComponentName(context, NoteWidget::class.java)
-    val lastNote = getContext().getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, "没有添加数据")
-    remoteViews.setTextViewText(R.id.appwidget_text, lastNote)
-    appWidgetManager.updateAppWidget(noteWidget, remoteViews)
-    getContext().toast(R.string.refreshSuccess)
 }
