@@ -22,7 +22,7 @@
 
     <string name="freshHour">刷新时间（小时）</string>
     <string name="invalidFormat">数据格式不正确</string>
-    <string name="fontSize">小部件字体大小（sp</string>
+    <string name="fontSize">小部件字体大小(sp)</string>
 
     <string name="refreshSuccess">刷新成功</string>
 </resources>
