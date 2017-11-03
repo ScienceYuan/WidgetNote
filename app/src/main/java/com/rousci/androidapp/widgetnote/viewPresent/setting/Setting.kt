@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.EditText
+import android.widget.ImageButton
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresent.*
 import org.jetbrains.anko.find

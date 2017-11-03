@@ -4,7 +4,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="appwidget_text">默认文字</string>
+    <string name="appwidget_text">请在“配置”中刷新部件</string>
 
     <string name="del">删除</string>
     <string name="recovery">还原</string>
@@ -23,4 +23,6 @@
     <string name="freshHour">刷新时间（小时）</string>
     <string name="invalidFormat">数据格式不正确</string>
     <string name="fontSize">小部件字体大小（sp）\n刷新后有效</string>
+
+    <string name="refreshSuccess">刷新成功</string>
 </resources>

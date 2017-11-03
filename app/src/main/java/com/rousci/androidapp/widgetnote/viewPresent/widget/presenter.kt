@@ -22,38 +22,49 @@ fun updateAppWidgetOnTime(context: Context, appWidgetManager: AppWidgetManager, 
     val editor = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
     editor.putInt(timeCounter, time + 1)
     if(time + 1 >= frequency){
-        updateAppWidget(context, appWidgetManager, appWidgetIds)
+        updateNoteData(context)
         editor.putInt(timeCounter, 0)
     }
+    updateAppWidget(context, appWidgetManager, appWidgetIds)
     editor.apply()
 }
 
 fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray){
 
+    val notes = queryAll()
     setDatabase(context)
-    val lastNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, null)
-    val notes = queryAll().filter { it != lastNote }
-    val lastIndex = notes.lastIndex
 
-    if(lastIndex != -1){
+    if (notes.lastIndex != -1){
+        val lastNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, null)
         val views = RemoteViews(context.packageName, R.layout.note_widget)
-
-        val random = Random()
-        val randomPositive = Math.abs(random.nextInt())
-        val choiceIndex = randomPositive % (lastIndex + 1)
-
-        val randomNote = notes[choiceIndex]
-
-        val editor = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
-        editor.putString(lastChoicedNote, randomNote)
-        editor.apply()
 
         for (id in appWidgetIds){
             val fontSize = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getFloat(fontSP, fontSPDefault)
             views.setTextViewTextSize(R.id.appwidget_text, TypedValue.COMPLEX_UNIT_SP, fontSize)
-            views.setTextViewText(R.id.appwidget_text, randomNote)
+            views.setTextViewText(R.id.appwidget_text, lastNote)
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(id, views)
         }
     }
+}
+
+fun updateNoteData(context: Context){
+    setDatabase(context)
+    val lastNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, null)
+    val notes = queryAll().filter { it != lastNote }
+    val randomNote = randomChoice(notes)
+
+    val editor = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
+    editor.putString(lastChoicedNote, randomNote)
+    editor.apply()
+}
+
+fun randomChoice(stringList:List<String>): String {
+    val lastIndex = stringList.lastIndex
+    val random = Random()
+    val randomPositive = Math.abs(random.nextInt())
+    val choiceIndex = randomPositive % (lastIndex + 1)
+    val randomString = stringList[choiceIndex]
+
+    return randomString
 }
