@@ -29,7 +29,7 @@ class EditNote : AppCompatActivity() {
         setSupportActionBar(toolBar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        editText = find(R.id.editText1)
+        editText = find(R.id.frequencyEditor)
 
         val position = intent.getIntExtra(notePosition, -1)
 

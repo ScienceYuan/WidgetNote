@@ -1,5 +1,4 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="notTranslucent" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>

@@ -17,3 +17,4 @@ val timeCounter = "timeCounter"
 val defaultFrequency = 1
 
 val fontSP = "fontSP"
+val fontSPDefault = 20.toFloat()

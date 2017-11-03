@@ -49,7 +49,7 @@ fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWid
         editor.apply()
 
         for (id in appWidgetIds){
-            val fontSize = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getFloat(fontSP, 18.toFloat())
+            val fontSize = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getFloat(fontSP, fontSPDefault)
             views.setTextViewTextSize(R.id.appwidget_text, TypedValue.COMPLEX_UNIT_SP, fontSize)
             views.setTextViewText(R.id.appwidget_text, randomNote)
             // Instruct the widget manager to update the widget

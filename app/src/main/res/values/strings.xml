@@ -22,4 +22,5 @@
 
     <string name="freshHour">刷新时间（小时）</string>
     <string name="invalidFormat">数据格式不正确</string>
+    <string name="fontSize">小部件字体大小（sp）\n刷新后有效</string>
 </resources>

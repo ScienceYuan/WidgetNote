@@ -3,10 +3,7 @@ package com.rousci.androidapp.widgetnote.viewPresent.setting
 import android.content.Context
 import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.viewPresent.defaultFrequency
-import com.rousci.androidapp.widgetnote.viewPresent.frequency
-import com.rousci.androidapp.widgetnote.viewPresent.singleDataPreference
-import com.rousci.androidapp.widgetnote.viewPresent.timeCounter
+import com.rousci.androidapp.widgetnote.viewPresent.*
 import org.jetbrains.anko.toast
 
 /**
@@ -20,8 +17,11 @@ fun setPresenter(setting: Setting){
 
 fun finishPR(){
     val frequencyEdited = getContext().frequencyEditor!!.text.toString().toInt()
+    val fontEdited = getContext().fontSizeEditor!!.text.toString().toFloat()
+
     val editor = getContext().getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
     editor.putInt(frequency, frequencyEdited)
+    editor.putFloat(fontSP, fontEdited)
     val time = getContext().getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(timeCounter, defaultFrequency)
     if (time >= frequencyEdited){
         editor.putInt(timeCounter, 0)
