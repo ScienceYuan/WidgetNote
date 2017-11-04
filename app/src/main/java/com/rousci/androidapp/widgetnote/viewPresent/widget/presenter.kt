@@ -31,11 +31,11 @@ fun updateAppWidgetOnTime(context: Context, appWidgetManager: AppWidgetManager, 
 
 fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray){
 
-    val notes = queryAll()
+    val lastNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, null)
+    val notes = queryAll().filter { it != lastNote }
     setDatabase(context)
 
     if (notes.lastIndex != -1){
-        val lastNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, null)
         val views = RemoteViews(context.packageName, R.layout.note_widget)
 
         for (id in appWidgetIds){
