@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rousci.androidapp.widgetnote.viewPresent.addNote.AddNote"
+    tools:context="com.rousci.androidapp.widgetnote.viewPresenter.addNote.AddNote"
     >
 
     <android.support.v7.widget.Toolbar

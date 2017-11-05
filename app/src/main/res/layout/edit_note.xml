@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rousci.androidapp.widgetnote.viewPresent.editNote.EditNote"
+    tools:context="com.rousci.androidapp.widgetnote.viewPresenter.editNote.EditNote"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar

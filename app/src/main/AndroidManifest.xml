@@ -9,7 +9,7 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/notTranslucent">
-        <activity android:name=".viewPresent.mainActivity.MainActivity"
+        <activity android:name=".viewPresenter.mainActivity.MainActivity"
             android:theme="@style/Translucent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,10 +18,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".viewPresent.addNote.AddNote"
+            android:name=".viewPresenter.addNote.AddNote"
              />
 
-        <receiver android:name=".viewPresent.widget.NoteWidget">
+        <receiver android:name=".viewPresenter.widget.NoteWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -32,10 +32,10 @@
         </receiver>
 
         <activity
-            android:name=".viewPresent.editNote.EditNote"
+            android:name=".viewPresenter.editNote.EditNote"
              />
 
-        <activity android:name=".viewPresent.setting.Setting"
+        <activity android:name=".viewPresenter.setting.Setting"
             />
     </application>
 
