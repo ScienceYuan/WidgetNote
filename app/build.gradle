@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
@@ -49,11 +50,10 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
-    testCompile "org.mockito:mockito-core:2.+"
+    testCompile "org.mockito:mockito-core:2.11.0"
+    testCompile "org.robolectric:robolectric:3.5.1"
 }
 repositories {
     mavenCentral()
     google()
 }
-
-apply plugin: 'kotlin-android-extensions'

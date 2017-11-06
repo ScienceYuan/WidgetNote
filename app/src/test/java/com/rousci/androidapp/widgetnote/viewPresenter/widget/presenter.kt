@@ -3,6 +3,7 @@ package com.rousci.androidapp.widgetnote.viewPresenter.widget
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.SharedPreferences
+import com.rousci.androidapp.widgetnote.BuildConfig
 import com.rousci.androidapp.widgetnote.viewPresenter.fontSP
 import com.rousci.androidapp.widgetnote.viewPresenter.fontSPDefault
 import com.rousci.androidapp.widgetnote.viewPresenter.lastChoicedNote
@@ -10,8 +11,11 @@ import com.rousci.androidapp.widgetnote.viewPresenter.singleDataPreference
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.mockito.Mockito.*
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 import kotlin.test.assertEquals
 
 /**
@@ -19,7 +23,8 @@ import kotlin.test.assertEquals
  * test without dagger
  * because I haven't learned that
  */
-
+@RunWith(RobolectricTestRunner::class)
+@Config(constants = BuildConfig::class)
 class TestForPresenter{
     val data = listOf("one", "two", "three", "four")
     val context = mock(Context::class.java)
@@ -47,11 +52,5 @@ class TestForPresenter{
         val random = randomChoice(data)
         val randomIsIn = random in data
         assertEquals(randomIsIn, true)
-    }
-
-    @Test
-    fun testUpdateWidget(){
-        updateWidget(context, widgetManager, widgetId)
-        verify(context).getSharedPreferences(singleDataPreference, 0)
     }
 }
