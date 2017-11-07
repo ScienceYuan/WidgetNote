@@ -18,7 +18,6 @@ class Setting : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.setting)
-        setPresenter(this)
 
         val toolbar = find<Toolbar>(R.id.toolbar1)
         toolbar.setTitle(R.string.setting)
@@ -38,7 +37,7 @@ class Setting : AppCompatActivity() {
 
     override fun finish() {
         try {
-            finishPR()
+            finish(this)
             super.finish()
         }
         catch (e:NumberFormatException){
@@ -47,7 +46,7 @@ class Setting : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        onOptionsItemSelectedPR(item)
+        onOptionsItemSelected(item, this)
         return super.onOptionsItemSelected(item)
     }
 }
