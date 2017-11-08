@@ -1,5 +1,6 @@
 package com.rousci.androidapp.widgetnote.viewPresenter.setting
 
+import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -37,7 +38,8 @@ class Setting : AppCompatActivity() {
 
     override fun finish() {
         try {
-            finish(this)
+            updateConfig(this)
+            updateRemoteView(AppWidgetManager.getInstance(this), this)
             super.finish()
         }
         catch (e:NumberFormatException){
