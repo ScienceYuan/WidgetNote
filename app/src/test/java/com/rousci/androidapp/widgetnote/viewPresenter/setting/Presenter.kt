@@ -23,7 +23,7 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(constants = BuildConfig::class, buildDir = "app/build")
-class PresenterTest{
+class Presenter{
 
     val setting = mock(Setting::class.java)
 

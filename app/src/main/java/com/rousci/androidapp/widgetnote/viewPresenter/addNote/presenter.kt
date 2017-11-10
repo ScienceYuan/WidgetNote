@@ -14,28 +14,22 @@ import org.jetbrains.anko.toast
  * interface: assume that activity has a property named editText1
  * and it is editable
  */
-var getContext: () -> AddNote = {null!!}
-
-fun setPresenter(addNote: AddNote){
-    getContext = {addNote}
-}
-
-fun onOptionsItemSelectedPR(item: MenuItem){
+fun onOptionsItemSelectedPR(item: MenuItem, addNote: AddNote){
     when(item.itemId){
         R.id.delete -> {
-            getContext().giveUpAndFinish()
+            addNote.giveUpAndFinish()
         }
         android.R.id.home -> {
-            getContext().finish()
+            addNote.finish()
         }
     }
 }
 
-fun finishPR(){
-    val data = getContext().editText1!!.text.toString()
+fun finishPR(addNote: AddNote){
+    val data = addNote.editText1!!.text.toString()
     if(data != ""){
-        val intent = getContext().intent
+        val intent = addNote.intent
         intent.putExtra(passString, data)
-        getContext().setResult(Activity.RESULT_OK,intent)
+        addNote.setResult(Activity.RESULT_OK,intent)
     }
 }

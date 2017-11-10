@@ -9,27 +9,21 @@ import com.rousci.androidapp.widgetnote.model.update
 /**
  * Created by rousci on 17-10-27.
  */
-var getContext:() -> EditNote = {null!!}
-
-fun setPresenter(editNote: EditNote){
-    getContext = {editNote}
-}
-
-fun onItemSelectPR(item: MenuItem){
+fun onItemSelectPR(item: MenuItem, editNote: EditNote){
     when(item.itemId){
         R.id.recovery -> {
-            getContext().editText!!.setText(getContext().dataSelect)
+            editNote.editText!!.setText(editNote.dataSelect)
         }
         R.id.del -> {
-            del(getContext().dataSelect)
-            getContext().finish()
+            del(editNote.dataSelect)
+            editNote.finish()
         }
         android.R.id.home -> {
-            getContext().finish()
+            editNote.finish()
         }
     }
 }
 
-fun finishPR(){
-    update(getContext().dataSelect, getContext().editText!!.text.toString())
+fun finishPR(editNote: EditNote){
+    update(editNote.dataSelect, editNote.editText!!.text.toString())
 }
