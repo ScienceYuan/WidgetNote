@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
 
-        setPresenter(this)
         setDatabase(this)
 
         toolbar = find<Toolbar>(R.id.toolbar)
@@ -58,7 +57,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         actionButton = find<FloatingActionButton>(R.id.floatingActionButton1)
         actionButton!!.setOnClickListener {
-            onActionBtnClick()
+            onActionBtnClick(this)
         }
     }
 
@@ -68,11 +67,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onStart() {
-        onStartPR()
+        onStartPR(this)
         super.onStart()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        return onNavigationItemSelectedPR(item)
+        return onNavigationItemSelectedPR(item, this)
     }
 }

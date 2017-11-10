@@ -22,8 +22,6 @@ class EditNote : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.edit_note)
 
-        setPresenter(this)
-
         val toolBar = find<Toolbar>(R.id.toolbar1)
         toolBar.setTitle(R.string.editNote)
         setSupportActionBar(toolBar)
@@ -47,13 +45,13 @@ class EditNote : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
-        onItemSelectPR(item!!)
+        onItemSelectPR(item!!, this)
 
         return super.onOptionsItemSelected(item)
     }
 
     override fun finish() {
-        finishPR()
+        finishPR(this)
         super.finish()
     }
 }

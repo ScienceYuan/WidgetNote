@@ -23,7 +23,7 @@ import kotlin.test.assertEquals
  */
 @RunWith(RobolectricTestRunner::class)
 @Config(constants = BuildConfig::class,buildDir = "app/build")
-class PresenterTest {
+class Presenter {
     val data = listOf("one", "two", "three", "four")
     val context = mock(Context::class.java)
     val sharedPreferences = mock(SharedPreferences::class.java)

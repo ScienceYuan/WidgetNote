@@ -11,7 +11,7 @@ import org.jetbrains.anko.find
 
 class AddNote : AppCompatActivity() {
 
-    var editText1:EditText? = null
+    var editText:EditText? = null
 
     /**
     * I do not know why it looks like this
@@ -20,10 +20,8 @@ class AddNote : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setPresenter(this)
-
         setContentView(R.layout.add_note)
-        editText1 = find<EditText>(R.id.frequencyEditor)
+        editText = find<EditText>(R.id.frequencyEditor)
 
         val toolbar = find<Toolbar>(R.id.toolbar1)
         toolbar.setTitle(R.string.addNote)
@@ -37,12 +35,12 @@ class AddNote : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        onOptionsItemSelectedPR(item)
+        onOptionsItemSelectedPR(item, this)
         return super.onOptionsItemSelected(item)
     }
 
     override fun finish(){
-        finishPR()
+        finishPR(this)
         return super.finish()
     }
 
