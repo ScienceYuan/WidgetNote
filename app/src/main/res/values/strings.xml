@@ -25,4 +25,5 @@
     <string name="fontSize">小部件字体大小(sp)</string>
 
     <string name="refreshSuccess">刷新成功</string>
+    <string name="empty_data">没有数据可供显示</string>
 </resources>

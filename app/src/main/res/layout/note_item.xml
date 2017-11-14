@@ -10,23 +10,24 @@
     app:cardBackgroundColor="@color/cardview_light_background"
     app:cardCornerRadius="@dimen/cardview_radius">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="@dimen/text_view_padding"
-        android:text="TextView"
-        android:textSize="16sp" />
-
     <android.support.v7.widget.AppCompatImageButton
         android:id="@+id/button1"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:layout_margin="@dimen/imagine_button_margin"
         android:background="@color/white"
-        app:srcCompat="@drawable/ic_edit_black_24dp"
-        android:layout_margin="@dimen/imagine_button_margin"/>
+        app:srcCompat="@drawable/ic_edit_black_24dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_weight="1"
+        android:padding="@dimen/text_view_padding"
+        android:text="TextView"
+        android:textSize="16sp" />
 
 </android.support.v7.widget.CardView>
