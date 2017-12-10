@@ -36,4 +36,10 @@
     <string name="empty_data">没有数据可供显示</string>
 
     <string name="backupSucceed">备份成功</string>
+
+    <!--import and output dialog-->
+    <string name="ODialogTitle">导出成功</string>
+    <string name="ODialogContent">文件保存在 内置sd卡/WidgetNote/backup</string>
+    <string name="OEmptyTitle">没有数据可供导出</string>
+    <string name="IDialogTitle">导入成功</string>
 </resources>

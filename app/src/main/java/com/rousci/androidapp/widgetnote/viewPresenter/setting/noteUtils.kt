@@ -77,5 +77,5 @@ fun parseFromString(string:String): List<String> {
  * which ready to store to a file.
  * */
 fun parseToString(stringList: List<String>):String{
-    return separateSymbol + stringList.reduce{p1, p2 -> p1 + separateSymbol + p2} + separateSymbol
+    return separateSymbol + stringList.reduce { p1, p2 -> p1 + separateSymbol + p2} + separateSymbol
 }

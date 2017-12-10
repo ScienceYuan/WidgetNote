@@ -9,8 +9,8 @@ android {
         applicationId "com.rousci.androidapp.widgetnote"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 3
-        versionName "0.0.3 alph"
+        versionCode 4
+        versionName "0.0.4 alph"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

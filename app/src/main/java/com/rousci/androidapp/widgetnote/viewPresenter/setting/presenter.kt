@@ -1,6 +1,7 @@
 package com.rousci.androidapp.widgetnote.viewPresenter.setting
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
@@ -99,10 +100,21 @@ fun outputData(context: Setting){
     }
 
     val noteList = queryAll()
-    val stringWriteOut = parseToString(noteList)
-
-    backupFile.writeBytes(stringWriteOut.toByteArray())
-    context.toast(R.string.backupSucceed)
+    try {
+        val stringWriteOut = parseToString(noteList)
+        backupFile.writeBytes(stringWriteOut.toByteArray())
+        val alertDialog = AlertDialog.Builder(context)
+        alertDialog.setTitle(R.string.ODialogTitle)
+        alertDialog.setMessage(R.string.ODialogContent)
+        alertDialog.setPositiveButton(R.string.sure, null)
+        alertDialog.show()
+    }
+    catch (e: UnsupportedOperationException){
+        val emptyAlert = AlertDialog.Builder(context)
+        emptyAlert.setTitle(R.string.OEmptyTitle)
+        emptyAlert.setPositiveButton(R.string.sure, null)
+        emptyAlert.show()
+    }
 }
 
 /**
@@ -132,14 +144,19 @@ fun onActivityResultPR(requestCode: Int, resultCode: Int, data: Intent?, context
 
     if (requestCode == getLocal && resultCode == Activity.RESULT_OK){
         val filePath =getPath(data!!.dataString)
-        Log.i("path", filePath)
 
         val file = File(filePath)
         val fileIS = FileInputStream(file)
         val buffer = ByteArray(fileIS.available())
+        Log.i("length", fileIS.available().toString())
         fileIS.read(buffer)
         val content = String(buffer)
         val notes = parseFromString(content)
         notes.forEach { insert(it) }
+
+        val alertDialog = AlertDialog.Builder(context)
+        alertDialog.setTitle(R.string.IDialogTitle)
+        alertDialog.setPositiveButton(R.string.sure, null)
+        alertDialog.show()
     }
 }

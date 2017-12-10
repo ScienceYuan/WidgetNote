@@ -21,4 +21,4 @@ val fontSP = "fontSP"
 val fontSPDefault = 20.toFloat()
 
 val backupFolderPath = "/WidgetNote/"
-val backupFileName = "backup.json"
+val backupFileName = "backup"
