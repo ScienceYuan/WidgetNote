@@ -7,6 +7,7 @@ package com.rousci.androidapp.widgetnote.viewPresenter
  */
 val notePosition = "position"
 val stringRequest = 1
+val getLocal = 2
 val passString = "String"
 
 val singleDataPreference = "lastNote"
@@ -18,3 +19,6 @@ val defaultFrequency = 1
 
 val fontSP = "fontSP"
 val fontSPDefault = 20.toFloat()
+
+val backupFolderPath = "/WidgetNote/"
+val backupFileName = "backup.json"

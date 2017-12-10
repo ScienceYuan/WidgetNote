@@ -19,7 +19,7 @@ var databasePointer:NotesDatabaseHelper? = null
 
 fun setDatabase(context: Context) {
     val database: NotesDatabaseHelper? = NotesDatabaseHelper(context)
-    com.rousci.androidapp.widgetnote.model.databasePointer = database
+    databasePointer = database
 }
 
 fun queryAll(): List<String> {

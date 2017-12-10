@@ -1,29 +1,39 @@
 <resources>
     <string name="app_name">WidgetNote</string>
 
+    <!--text of drawerLayout-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!--text when the widget get error-->
     <string name="appwidget_text">未刷新</string>
 
+    <!--text of edit activity-->
     <string name="del">删除</string>
     <string name="recovery">还原</string>
 
+    <!--look like this is in a mess-->
     <string name="addNote">添加标签</string>
     <string name="editNote">编辑标签</string>
 
+    <!--text in the mainActivity-->
     <string name="about">关于</string>
     <string name="about_content">WidgetNote提供一个在桌面上随机刷新文字的小部件\n由githubID:ScienceYuan开发\n由MIT协议分发</string>
     <string name="setting">配置</string>
-
     <string name="nav_title">WidgetNote</string>
 
     <string name="sure">确定</string>
 
+    <!--used in settingActivity-->
     <string name="freshHour">刷新时间（小时）</string>
     <string name="invalidFormat">数据格式不正确</string>
     <string name="fontSize">小部件字体大小(sp)</string>
+    <string name="import_data">导入数据</string>
+    <string name="output_data">导出数据</string>
 
+    <!--look like this two texts never be used-->
     <string name="refreshSuccess">刷新成功</string>
     <string name="empty_data">没有数据可供显示</string>
+
+    <string name="backupSucceed">备份成功</string>
 </resources>
