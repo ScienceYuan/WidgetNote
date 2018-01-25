@@ -7,7 +7,8 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
 
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="widget_margin">8dp</dimen>
-    <dimen name="cardview_margin">20dp</dimen>
+    <dimen name="cardview_margin_top">20dp</dimen>
+    <dimen name="cardview_margin_side">10dp</dimen>
     <dimen name="cardview_min_height">50dp</dimen>
     <dimen name="cardview_radius">5dp</dimen>
 
