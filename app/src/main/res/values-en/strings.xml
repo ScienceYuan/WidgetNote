@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">WidgetNote</string>
+
+    <!--text of drawerLayout-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--text when the widget get error-->
+    <string name="appwidget_text">need to refresh</string>
+
+    <!--text of edit activity-->
+    <string name="del">delete</string>
+    <string name="recovery">recovery</string>
+
+    <!--look like this is in a mess-->
+    <string name="addNote">add note</string>
+    <string name="editNote">edit note</string>
+
+    <!--text in the mainActivity-->
+    <string name="about">about</string>
+    <string name="about_content">WidgetNote provides a widget that show random text on screen\nwritten by githubID:ScienceYuan\nunder MIT license</string>
+    <string name="setting">setting</string>
+    <string name="nav_title">WidgetNote</string>
+
+    <string name="sure">sure</string>
+
+    <!--used in settingActivity-->
+    <string name="freshHour">fresh time (hour)</string>
+    <string name="invalidFormat">invalid format</string>
+    <string name="fontSize">widget font size(sp)</string>
+    <string name="import_data">import data</string>
+    <string name="output_data">output data</string>
+
+    <!--look like this two texts never be used-->
+    <string name="refreshSuccess">refresh successfully</string>
+    <string name="empty_data">no data to show</string>
+
+    <string name="backupSucceed">backup successfully</string>
+
+    <!--import and output dialog-->
+    <string name="ODialogTitle">output data successfully</string>
+    <string name="ODialogContent">file saved in sdcard0/WidgetNote/backup</string>
+    <string name="OEmptyTitle">no data to output</string>
+    <string name="IDialogTitle">import successfully</string>
+</resources>
