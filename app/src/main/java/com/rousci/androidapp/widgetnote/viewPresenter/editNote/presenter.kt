@@ -18,7 +18,7 @@ fun onItemSelectPR(item: MenuItem, editNote: EditNote){
             del(editNote.dataSelect)
             editNote.finish()
         }
-        android.R.id.home -> {
+        R.id.home -> {
             editNote.finish()
         }
     }

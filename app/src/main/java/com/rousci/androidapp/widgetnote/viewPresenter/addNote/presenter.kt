@@ -19,7 +19,7 @@ fun onOptionsItemSelectedPR(item: MenuItem, addNote: AddNote){
             addNote.editText!!.setText("")
             addNote.finish()
         }
-        android.R.id.home -> {
+        R.id.home -> {
             addNote.finish()
         }
     }

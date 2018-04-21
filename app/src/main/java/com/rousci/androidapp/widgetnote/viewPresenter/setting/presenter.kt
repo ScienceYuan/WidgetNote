@@ -16,7 +16,6 @@ import com.rousci.androidapp.widgetnote.model.insert
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.viewPresenter.*
 import com.rousci.androidapp.widgetnote.viewPresenter.widget.NoteWidget
-import org.jetbrains.anko.toast
 import java.io.File
 import java.io.FileInputStream
 
@@ -64,7 +63,7 @@ fun updateRemoteView(appWidgetManager: AppWidgetManager, context: Setting){
  * do some things that depend on the different items*/
 fun onOptionsItemSelected(item: MenuItem, context: Activity){
     when(item.itemId){
-        android.R.id.home -> {
+        R.id.home -> {
             context.finish()
         }
     }
@@ -77,7 +76,7 @@ fun onOptionsItemSelected(item: MenuItem, context: Activity){
  * so it can get the path of the file passed by the intent it gets back*/
 fun importData(context: Setting){
     val localData = Intent(Intent.ACTION_GET_CONTENT)
-    localData.putExtra(Intent.EXTRA_LOCAL_ONLY, Intent.EXTRA_LOCAL_ONLY)
+    //localData.putExtra(Intent.EXTRA_LOCAL_ONLY, Intent.EXTRA_LOCAL_ONLY)
     localData.type = "text/*"
     context.startActivityForResult(localData, getLocal)
 }
