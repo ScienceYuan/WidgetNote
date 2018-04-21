@@ -17,7 +17,6 @@ import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.viewPresenter.*
 import com.rousci.androidapp.widgetnote.viewPresenter.widget.NoteWidget
 import java.io.File
-import java.io.FileInputStream
 
 /**
  * Created by rousci on 17-11-2.
@@ -75,9 +74,9 @@ fun onOptionsItemSelected(item: MenuItem, context: Activity){
  * and then the context get back a intent,
  * so it can get the path of the file passed by the intent it gets back*/
 fun importData(context: Setting){
-    val localData = Intent(Intent.ACTION_GET_CONTENT)
-    //localData.putExtra(Intent.EXTRA_LOCAL_ONLY, Intent.EXTRA_LOCAL_ONLY)
-    localData.type = "text/*"
+    val localData = Intent(Intent.ACTION_OPEN_DOCUMENT)
+    localData.addCategory(Intent.CATEGORY_OPENABLE)
+    localData.type = "*/*"
     context.startActivityForResult(localData, getLocal)
 }
 
@@ -124,30 +123,18 @@ fun outputData(context: Setting){
  * @param data the intent passed between activities,it stores the data of message.
  * */
 fun onActivityResultPR(requestCode: Int, resultCode: Int, data: Intent?, context: Setting) {
-
     /**
      * @param uri The sting value of uri that ready be parse to absolute path
      * it should be "file:// ...",and should not support other formats
      * @return the value the uri string parsed to
      * */
-    fun getPath(uri: String):String{
-        fun getStart(s: String, num:Int):String = s.filterIndexed{ index, _ -> index < num}
-        fun getRest(s: String, num: Int):String = s.filterIndexed { index, _ -> index >= num}
-        if (getStart(uri, 4) == "file"){
-            return getRest(uri, 7)
-        }
-        else{
-            return uri
-        }
-    }
 
     if (requestCode == getLocal && resultCode == Activity.RESULT_OK){
-        val filePath =getPath(data!!.dataString)
+        val fileURI = data!!.data
+        Log.d("uri", fileURI.path)
 
-        val file = File(filePath)
-        val fileIS = FileInputStream(file)
+        val fileIS = context.contentResolver.openInputStream(fileURI)
         val buffer = ByteArray(fileIS.available())
-        Log.i("length", fileIS.available().toString())
         fileIS.read(buffer)
         val content = String(buffer)
         val notes = parseFromString(content)
