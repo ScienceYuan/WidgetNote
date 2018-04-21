@@ -1,5 +1,7 @@
 package com.rousci.androidapp.widgetnote.viewPresenter.setting
 
+import java.io.File
+
 import android.app.Activity
 import android.app.AlertDialog
 import android.appwidget.AppWidgetManager
@@ -11,12 +13,17 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.MenuItem
 import android.widget.RemoteViews
+
+import com.github.salomonbrys.kotson.*
+import com.google.gson.Gson
+import com.google.gson.JsonArray
+
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.insert
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.viewPresenter.*
 import com.rousci.androidapp.widgetnote.viewPresenter.widget.NoteWidget
-import java.io.File
+
 
 /**
  * Created by rousci on 17-11-2.
@@ -62,7 +69,7 @@ fun updateRemoteView(appWidgetManager: AppWidgetManager, context: Setting){
  * do some things that depend on the different items*/
 fun onOptionsItemSelected(item: MenuItem, context: Activity){
     when(item.itemId){
-        R.id.home -> {
+        android.R.id.home -> {
             context.finish()
         }
     }
@@ -87,7 +94,7 @@ fun importData(context: Setting){
  * so the context can make a file that stores data of user*/
 fun outputData(context: Setting){
     val folderPath = Environment.getExternalStorageDirectory().path + backupFolderPath
-    val filePath = Environment.getExternalStorageDirectory().path + backupFolderPath + backupFileName
+    val filePath = folderPath + backupFileName
     val storageFolder = File(folderPath)
     val backupFile = File(filePath)
     if (!storageFolder.exists()){
@@ -99,7 +106,7 @@ fun outputData(context: Setting){
 
     val noteList = queryAll()
     try {
-        val stringWriteOut = parseToString(noteList)
+        val stringWriteOut = noteList.toJsonArray().string
         backupFile.writeBytes(stringWriteOut.toByteArray())
         val alertDialog = AlertDialog.Builder(context)
         alertDialog.setTitle(R.string.ODialogTitle)
@@ -122,22 +129,15 @@ fun outputData(context: Setting){
  * or something other.
  * @param data the intent passed between activities,it stores the data of message.
  * */
-fun onActivityResultPR(requestCode: Int, resultCode: Int, data: Intent?, context: Setting) {
-    /**
-     * @param uri The sting value of uri that ready be parse to absolute path
-     * it should be "file:// ...",and should not support other formats
-     * @return the value the uri string parsed to
-     * */
-
+fun onActivityResultPR(requestCode: Int, resultCode: Int, data: Intent, context: Setting) {
     if (requestCode == getLocal && resultCode == Activity.RESULT_OK){
-        val fileURI = data!!.data
-        Log.d("uri", fileURI.path)
+        val fileURI = data.data
 
         val fileIS = context.contentResolver.openInputStream(fileURI)
         val buffer = ByteArray(fileIS.available())
         fileIS.read(buffer)
         val content = String(buffer)
-        val notes = parseFromString(content)
+        val notes = Gson().fromJson<List<String>>(content)
         notes.forEach { insert(it) }
 
         val alertDialog = AlertDialog.Builder(context)

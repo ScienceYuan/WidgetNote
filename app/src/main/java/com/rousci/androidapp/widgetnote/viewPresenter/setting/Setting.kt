@@ -71,7 +71,7 @@ class Setting : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         onActivityResultPR(requestCode, resultCode, data, this)
         super.onActivityResult(requestCode, resultCode, data)
     }

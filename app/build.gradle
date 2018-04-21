@@ -46,6 +46,7 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
+    implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
 
     testImplementation 'junit:junit:4.12'
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
