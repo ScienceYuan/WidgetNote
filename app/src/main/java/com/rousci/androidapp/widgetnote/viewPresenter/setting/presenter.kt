@@ -9,20 +9,19 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Environment
-import android.util.Log
 import android.util.TypedValue
 import android.view.MenuItem
 import android.widget.RemoteViews
 
 import com.github.salomonbrys.kotson.*
 import com.google.gson.Gson
-import com.google.gson.JsonArray
 
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.model.insert
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.viewPresenter.*
 import com.rousci.androidapp.widgetnote.viewPresenter.widget.NoteWidget
+import java.io.FileNotFoundException
 
 
 /**
@@ -97,6 +96,7 @@ fun outputData(context: Setting){
     val filePath = folderPath + backupFileName
     val storageFolder = File(folderPath)
     val backupFile = File(filePath)
+
     if (!storageFolder.exists()){
         storageFolder.mkdirs()
     }
@@ -106,17 +106,24 @@ fun outputData(context: Setting){
 
     val noteList = queryAll()
     try {
-        val stringWriteOut = noteList.toJsonArray().string
+        val gson = Gson()
+        val stringWriteOut = gson.toJson(noteList)
         backupFile.writeBytes(stringWriteOut.toByteArray())
         val alertDialog = AlertDialog.Builder(context)
-        alertDialog.setTitle(R.string.ODialogTitle)
-        alertDialog.setMessage(R.string.ODialogContent)
+        alertDialog.setTitle(R.string.OutputDialogTitle)
+        alertDialog.setMessage(R.string.OutputDialogContent)
         alertDialog.setPositiveButton(R.string.sure, null)
         alertDialog.show()
     }
     catch (e: UnsupportedOperationException){
         val emptyAlert = AlertDialog.Builder(context)
-        emptyAlert.setTitle(R.string.OEmptyTitle)
+        emptyAlert.setTitle(R.string.OutputEmptyTitle)
+        emptyAlert.setPositiveButton(R.string.sure, null)
+        emptyAlert.show()
+    }
+    catch (e: FileNotFoundException){
+        val emptyAlert = AlertDialog.Builder(context)
+        emptyAlert.setTitle(R.string.FileNotFound)
         emptyAlert.setPositiveButton(R.string.sure, null)
         emptyAlert.show()
     }
@@ -141,7 +148,7 @@ fun onActivityResultPR(requestCode: Int, resultCode: Int, data: Intent, context:
         notes.forEach { insert(it) }
 
         val alertDialog = AlertDialog.Builder(context)
-        alertDialog.setTitle(R.string.IDialogTitle)
+        alertDialog.setTitle(R.string.InputDialogTitle)
         alertDialog.setPositiveButton(R.string.sure, null)
         alertDialog.show()
     }

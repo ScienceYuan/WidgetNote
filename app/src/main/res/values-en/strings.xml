@@ -38,8 +38,9 @@
     <string name="backupSucceed">backup successfully</string>
 
     <!--import and output dialog-->
-    <string name="ODialogTitle">output data successfully</string>
-    <string name="ODialogContent">file saved in sdcard0/WidgetNote/backup</string>
-    <string name="OEmptyTitle">no data to output</string>
-    <string name="IDialogTitle">import successfully</string>
+    <string name="OutputDialogTitle">output data successfully</string>
+    <string name="OutputDialogContent">file saved in sdcard0/WidgetNote/backup</string>
+    <string name="OutputEmptyTitle">no data to output</string>
+    <string name="InputDialogTitle">import successfully</string>
+    <string name="FileNotFound">file not found.Have you gave me a permission?</string>
 </resources>

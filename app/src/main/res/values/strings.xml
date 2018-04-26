@@ -38,8 +38,9 @@
     <string name="backupSucceed">备份成功</string>
 
     <!--import and output dialog-->
-    <string name="ODialogTitle">导出成功</string>
-    <string name="ODialogContent">文件保存在 内置sd卡/WidgetNote/backup</string>
-    <string name="OEmptyTitle">没有数据可供导出</string>
-    <string name="IDialogTitle">导入成功</string>
+    <string name="OutputDialogTitle">导出成功</string>
+    <string name="OutputDialogContent">文件保存在 内置sd卡/WidgetNote/backup</string>
+    <string name="OutputEmptyTitle">没有数据可供导出</string>
+    <string name="InputDialogTitle">导入成功</string>
+    <string name="FileNotFound">无法写入，没有权限或者SD未挂载</string>
 </resources>
