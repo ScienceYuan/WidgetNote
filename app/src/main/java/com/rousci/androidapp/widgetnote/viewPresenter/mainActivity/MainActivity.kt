@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setDatabase(this)
 
+        getPermission(this)
+
         toolbar = find<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 

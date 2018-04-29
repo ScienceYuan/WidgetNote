@@ -67,7 +67,7 @@ class Presenter{
 
     @Test
     fun itemSelect(){
-        onOptionsItemSelected(finishItem, setting)
+        onOptionsItemSelectedPR(finishItem, setting)
         verify(finishItem).itemId
         verify(setting).finish()
     }

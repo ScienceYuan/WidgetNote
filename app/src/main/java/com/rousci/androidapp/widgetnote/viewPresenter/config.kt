@@ -5,20 +5,22 @@ package com.rousci.androidapp.widgetnote.viewPresenter
  *
  * to replace the flag word by val
  */
-val notePosition = "position"
-val stringRequest = 1
-val getLocal = 2
-val passString = "String"
+const val notePosition = "position"
+const val stringRequest = 1
+const val getLocal = 2
+const val passString = "String"
 
-val singleDataPreference = "lastNote"
-val lastChoicedNote = "lastChoicedNote"
+const val singleDataPreference = "lastNote"
+const val lastChoicedNote = "lastChoicedNote"
 
-val frequency = "frequency"
-val timeCounter = "timeCounter"
-val defaultFrequency = 1
+const val frequency = "frequency"
+const val timeCounter = "timeCounter"
+const val defaultFrequency = 1
 
-val fontSP = "fontSP"
-val fontSPDefault = 20.toFloat()
+const val fontSP = "fontSP"
+const val fontSPDefault = 20.toFloat()
 
-val backupFolderPath = "/WidgetNote/"
-val backupFileName = "backup"
+const val backupFolderPath = "/WidgetNote/"
+const val backupFileName = "backup"
+
+const val writeFilePermission = 3

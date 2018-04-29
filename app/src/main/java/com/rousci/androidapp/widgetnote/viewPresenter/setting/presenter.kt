@@ -1,5 +1,6 @@
 package com.rousci.androidapp.widgetnote.viewPresenter.setting
 
+import android.Manifest
 import java.io.File
 
 import android.app.Activity
@@ -8,6 +9,8 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Environment
 import android.util.TypedValue
 import android.view.MenuItem
@@ -66,7 +69,7 @@ fun updateRemoteView(appWidgetManager: AppWidgetManager, context: Setting){
  * @param item the item be selected
  * @param context the activity be presented
  * do some things that depend on the different items*/
-fun onOptionsItemSelected(item: MenuItem, context: Activity){
+fun onOptionsItemSelectedPR(item: MenuItem, context: Activity){
     when(item.itemId){
         android.R.id.home -> {
             context.finish()
@@ -85,6 +88,7 @@ fun importData(context: Setting){
     localData.type = "*/*"
     context.startActivityForResult(localData, getLocal)
 }
+
 
 /**
  * @param context the context to make intent
@@ -105,28 +109,15 @@ fun outputData(context: Setting){
     }
 
     val noteList = queryAll()
-    try {
-        val gson = Gson()
-        val stringWriteOut = gson.toJson(noteList)
-        backupFile.writeBytes(stringWriteOut.toByteArray())
-        val alertDialog = AlertDialog.Builder(context)
-        alertDialog.setTitle(R.string.OutputDialogTitle)
-        alertDialog.setMessage(R.string.OutputDialogContent)
-        alertDialog.setPositiveButton(R.string.sure, null)
-        alertDialog.show()
-    }
-    catch (e: UnsupportedOperationException){
-        val emptyAlert = AlertDialog.Builder(context)
-        emptyAlert.setTitle(R.string.OutputEmptyTitle)
-        emptyAlert.setPositiveButton(R.string.sure, null)
-        emptyAlert.show()
-    }
-    catch (e: FileNotFoundException){
-        val emptyAlert = AlertDialog.Builder(context)
-        emptyAlert.setTitle(R.string.FileNotFound)
-        emptyAlert.setPositiveButton(R.string.sure, null)
-        emptyAlert.show()
-    }
+
+    val gson = Gson()
+    val stringWriteOut = gson.toJson(noteList)
+    backupFile.writeBytes(stringWriteOut.toByteArray())
+    val alertDialog = AlertDialog.Builder(context)
+    alertDialog.setTitle(R.string.OutputDialogTitle)
+    alertDialog.setMessage(R.string.OutputDialogContent)
+    alertDialog.setPositiveButton(R.string.sure, null)
+    alertDialog.show()
 }
 
 /**
@@ -136,14 +127,17 @@ fun outputData(context: Setting){
  * or something other.
  * @param data the intent passed between activities,it stores the data of message.
  * */
-fun onActivityResultPR(requestCode: Int, resultCode: Int, data: Intent, context: Setting) {
+fun onActivityResultPR(requestCode: Int, resultCode: Int, data: Intent?, context: Setting) {
     if (requestCode == getLocal && resultCode == Activity.RESULT_OK){
-        val fileURI = data.data
+        val fileURI = data!!.data
 
         val fileIS = context.contentResolver.openInputStream(fileURI)
         val buffer = ByteArray(fileIS.available())
         fileIS.read(buffer)
-        val content = String(buffer)
+
+        val content:String = context.contentResolver.openInputStream(fileURI).use {
+            it.bufferedReader().readText()
+        }
         val notes = Gson().fromJson<List<String>>(content)
         notes.forEach { insert(it) }
 
