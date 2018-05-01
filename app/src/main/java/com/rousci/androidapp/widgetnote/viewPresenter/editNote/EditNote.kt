@@ -15,8 +15,8 @@ import org.jetbrains.anko.find
 class EditNote : AppCompatActivity() {
 
     val dataSet:MutableList<String> = mutableListOf()
-    var dataSelect:String = ""
-    var editText:EditText? = null
+    lateinit var dataSelect:String
+    lateinit var editText:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@ class EditNote : AppCompatActivity() {
         dataSet.addAll(queryAll())
         dataSelect = dataSet[position]
 
-        editText!!.setText(dataSelect)
+        editText.setText(dataSelect)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

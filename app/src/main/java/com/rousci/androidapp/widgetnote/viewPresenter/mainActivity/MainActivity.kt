@@ -17,10 +17,10 @@ import org.jetbrains.anko.find
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    var recycleView: RecyclerView? = null
-    var toolbar:Toolbar? = null
-    var drawer:DrawerLayout? = null
-    var actionButton:FloatingActionButton? = null
+    lateinit var recycleView: RecyclerView
+    lateinit var toolbar:Toolbar
+    lateinit var drawer:DrawerLayout
+    lateinit var actionButton:FloatingActionButton
     val dataSet = mutableListOf<String>()
 
     fun updateRecycleView(){
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
-        drawer!!.setDrawerListener(toggle)
+        drawer.setDrawerListener(toggle)
         toggle.syncState()
 
         val navView = find<NavigationView>(R.id.nav_view)
@@ -53,12 +53,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         recycleView = find<RecyclerView>(R.id.recycleView)
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
-        recycleView!!.layoutManager = layoutManager
-        recycleView!!.adapter = StringRecycleAdapter(dataSet, this)
+        recycleView.layoutManager = layoutManager
+        recycleView.adapter = StringRecycleAdapter(dataSet, this)
         updateRecycleView()
 
         actionButton = find<FloatingActionButton>(R.id.floatingActionButton1)
-        actionButton!!.setOnClickListener {
+        actionButton.setOnClickListener {
             onActionBtnClick(this)
         }
     }

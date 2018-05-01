@@ -52,7 +52,6 @@ fun onNavigationItemSelectedPR(item: MenuItem, mainActivity: MainActivity): Bool
             alertDialog.setPositiveButton(R.string.sure, null)
             alertDialog.show()
         }
-
     }
     return true
 }

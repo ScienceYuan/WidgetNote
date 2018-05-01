@@ -22,8 +22,8 @@ import org.jetbrains.anko.toast
 * update all widgets when it is finished
 * */
 class Setting : AppCompatActivity() {
-    var frequencyEditor:EditText? = null
-    var fontSizeEditor:EditText? = null
+    lateinit var frequencyEditor:EditText
+    lateinit var fontSizeEditor:EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +42,8 @@ class Setting : AppCompatActivity() {
         val frequencyStored = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getInt(frequency, defaultFrequency)
         val fontSize = getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getFloat(fontSP, fontSPDefault)
 
-        fontSizeEditor!!.setText(fontSize.toString())
-        frequencyEditor!!.setText(frequencyStored.toString())
+        fontSizeEditor.setText(fontSize.toString())
+        frequencyEditor.setText(frequencyStored.toString())
 
         val importBtn = find<Button>(R.id.button_import)
         val outputBtn = find<Button>(R.id.button_output)

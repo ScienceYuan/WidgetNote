@@ -11,7 +11,7 @@ import org.jetbrains.anko.find
 
 class AddNote : AppCompatActivity() {
 
-    var editText:EditText? = null
+    lateinit var editText:EditText
 
     /**
     * I do not know why it looks like this
