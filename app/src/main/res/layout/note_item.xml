@@ -5,9 +5,9 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/cardview_margin_side"
-    android:layout_marginStart="@dimen/cardview_margin_side"
-    android:layout_marginTop="@dimen/cardview_margin_top"
+    android:layout_marginEnd="@dimen/item_margin_side"
+    android:layout_marginStart="@dimen/item_margin_side"
+    android:layout_marginTop="@dimen/item_margin_top"
     android:minHeight="@dimen/cardview_min_height"
     app:cardBackgroundColor="@color/cardview_light_background"
     app:cardCornerRadius="@dimen/cardview_radius">

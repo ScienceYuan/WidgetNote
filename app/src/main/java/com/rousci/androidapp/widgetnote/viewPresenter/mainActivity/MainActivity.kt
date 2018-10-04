@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     fun updateRecycleView(){
         dataSet.clear()
         dataSet.addAll(queryAll())
-        recycleView!!.adapter.notifyDataSetChanged()
+        recycleView.adapter!!.notifyDataSetChanged()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
