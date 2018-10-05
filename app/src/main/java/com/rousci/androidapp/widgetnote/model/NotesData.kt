@@ -25,6 +25,7 @@ fun setDatabase(context: Context) {
 fun queryAll(): List<String> {
     val data =  databasePointer!!.readableDatabase.select(noteTableName, contentName)
             .parseList(classParser<String>())
+    databasePointer!!.close()
     return data
 }
 
@@ -32,17 +33,21 @@ fun query(id: Int): String{
     val data = databasePointer!!.readableDatabase.select(noteTableName, contentName)
             .whereArgs("$idName = $id")
             .parseSingle(classParser<String>())
+    databasePointer!!.close()
     return data
 }
 
 fun insert(content: String){
     databasePointer!!.writableDatabase.insert(noteTableName, contentName to content)
+    databasePointer!!.close()
 }
 
 fun update(before: String, after: String){
     databasePointer!!.writableDatabase.update(noteTableName, contentName to after).where("$contentName = '$before'").exec()
+    databasePointer!!.close()
 }
 
 fun del(content: String){
     databasePointer!!.writableDatabase.delete(noteTableName, "$contentName = '$content'")
+    databasePointer!!.close()
 }

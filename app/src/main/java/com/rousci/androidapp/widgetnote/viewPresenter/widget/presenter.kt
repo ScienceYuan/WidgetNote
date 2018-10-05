@@ -1,7 +1,10 @@
 package com.rousci.androidapp.widgetnote.viewPresenter.widget
 
+import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.util.TypedValue
 import android.widget.RemoteViews
 import com.rousci.androidapp.widgetnote.R
@@ -39,6 +42,10 @@ fun updateWidget(context: Context, appWidgetManager: AppWidgetManager, appWidget
     val fontSize = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getFloat(fontSP, fontSPDefault)
     views.setTextViewTextSize(R.id.appwidget_text, TypedValue.COMPLEX_UNIT_SP, fontSize)
     views.setTextViewText(R.id.appwidget_text, lastNote)
+    val isBlackWallpaper = isBlack(getWallpaper(context))
+    if (!isBlackWallpaper){
+        views.setTextColor(R.id.appwidget_text, android.graphics.Color.BLACK)
+    }
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetIds, views)
 }
@@ -66,4 +73,32 @@ fun randomChoice(stringList:List<String>): String {
     val randomString = stringList[choiceIndex]
 
     return randomString
+}
+
+fun isBlack(bitmap: Bitmap): Boolean {
+    fun isBlack(color: Int): Boolean{
+        val A = (color shr 24) and 0xff
+        val R = (color shr 16) and 0xff
+        val G = (color shr 8) and 0xff
+        val B = color and 0xff
+        val level = R * 0.299 + G * 0.587 + B * 0.114
+        return level < 192
+    }
+
+
+    val rowIndex = (0..7).toList().map { bitmap.width / 8 * it}
+    val columnIndex = (0..7).toList().map { bitmap.height / 8 * it }
+    val points = rowIndex
+            .map { a -> columnIndex
+                    .map {b -> a to b } }
+            .reduce { acc, list -> acc + list }
+    val pixelColors = points
+            .map { bitmap.getPixel(it.first, it.second) }
+            .map { isBlack(it) }
+    return pixelColors.count {it == true} > pixelColors.count{it == false}
+}
+
+fun getWallpaper(context: Context): Bitmap {
+    val wallpaperManager = WallpaperManager.getInstance(context)
+    return (wallpaperManager.drawable as BitmapDrawable).bitmap
 }
