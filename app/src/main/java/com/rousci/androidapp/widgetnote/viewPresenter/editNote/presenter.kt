@@ -12,7 +12,7 @@ import com.rousci.androidapp.widgetnote.model.update
 fun onItemSelectPR(item: MenuItem, editNote: EditNote){
     when(item.itemId){
         R.id.recovery -> {
-            editNote.editText!!.setText(editNote.dataSelect)
+            editNote.editText.setText(editNote.dataSelect)
         }
         R.id.del -> {
             del(editNote.dataSelect)
@@ -25,5 +25,5 @@ fun onItemSelectPR(item: MenuItem, editNote: EditNote){
 }
 
 fun finishPR(editNote: EditNote){
-    update(editNote.dataSelect, editNote.editText!!.text.toString())
+    update(editNote.dataSelect, editNote.editText.text.toString())
 }

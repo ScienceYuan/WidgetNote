@@ -16,17 +16,17 @@ import com.rousci.androidapp.widgetnote.viewPresenter.passString
 fun onOptionsItemSelectedPR(item: MenuItem, addNote: AddNote){
     when(item.itemId){
         R.id.delete -> {
-            addNote.editText!!.setText("")
+            addNote.editText.setText("")
             addNote.finish()
         }
-        R.id.home -> {
+        android.R.id.home -> {
             addNote.finish()
         }
     }
 }
 
 fun finishPR(addNote: AddNote){
-    val data = addNote.editText!!.text.toString()
+    val data = addNote.editText.text.toString()
     if(data != ""){
         val intent = addNote.intent
         intent.putExtra(passString, data)
