@@ -1,6 +1,5 @@
 package com.rousci.androidapp.widgetnote.viewPresenter.setting
 
-import android.Manifest
 import java.io.File
 
 import android.app.Activity
@@ -9,8 +8,6 @@ import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Environment
 import android.util.TypedValue
 import android.view.MenuItem
@@ -24,7 +21,6 @@ import com.rousci.androidapp.widgetnote.model.insert
 import com.rousci.androidapp.widgetnote.model.queryAll
 import com.rousci.androidapp.widgetnote.viewPresenter.*
 import com.rousci.androidapp.widgetnote.viewPresenter.widget.NoteWidget
-import java.io.FileNotFoundException
 
 
 /**
@@ -38,8 +34,8 @@ import java.io.FileNotFoundException
  * this function read configs from the activity of setting,
  * and configs will upload to sharedPreferences */
 fun updateConfig(context: Setting){
-    val frequencyEdited = context.frequencyEditor!!.text.toString().toInt()
-    val fontEdited = context.fontSizeEditor!!.text.toString().toFloat()
+    val frequencyEdited = context.frequencyEditor.text.toString().toInt()
+    val fontEdited = context.fontSizeEditor.text.toString().toFloat()
 
     val editor = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).edit()
     editor.putInt(frequency, frequencyEdited)
@@ -54,7 +50,7 @@ fun updateConfig(context: Setting){
  * this function will change all the widget that the widgetManager controls
  * by the config read from  context's sharedPreference*/
 fun updateRemoteView(appWidgetManager: AppWidgetManager, context: Setting){
-    val fontEdited = context.fontSizeEditor!!.text.toString().toFloat()
+    val fontEdited = context.fontSizeEditor.text.toString().toFloat()
     val lastNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).
             getString(lastChoicedNote, "没有添加数据")
 
