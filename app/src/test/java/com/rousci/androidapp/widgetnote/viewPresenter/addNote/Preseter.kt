@@ -5,7 +5,6 @@ import android.content.Intent
 import android.text.Editable
 import android.view.MenuItem
 import android.widget.EditText
-import com.rousci.androidapp.widgetnote.BuildConfig
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresenter.passString
 import org.junit.Before
@@ -13,7 +12,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 import org.mockito.Mockito
 import org.mockito.Mockito.*
 
@@ -22,7 +20,6 @@ import org.mockito.Mockito.*
  */
 
 @RunWith(RobolectricTestRunner::class)
-@Config(constants = BuildConfig::class, buildDir = "app/build")
 class Presenter {
     val addNote = mock(AddNote::class.java)
     val text = mock(Editable::class.java)
@@ -32,9 +29,9 @@ class Presenter {
 
     @Before
     fun initFunc(){
-        Mockito.`when`(addNote.editText).thenReturn(editText)
-        Mockito.`when`(editText.text).thenReturn(text)
-        Mockito.`when`(addNote.intent).thenReturn(intent)
+        `when`(addNote.editText).thenReturn(editText)
+        `when`(editText.text).thenReturn(text)
+        `when`(addNote.intent).thenReturn(intent)
     }
 
     @Test
@@ -49,7 +46,7 @@ class Presenter {
 
     @Test
     fun onHomeSelect(){
-        Mockito.`when`(item.itemId).thenReturn(android.R.id.home)
+        `when`(item.itemId).thenReturn(android.R.id.home)
         onOptionsItemSelectedPR(item, addNote)
         verify(item).itemId
         verify(addNote).finish()
@@ -57,7 +54,7 @@ class Presenter {
 
     @Test
     fun onDeleteSelect(){
-        Mockito.`when`(item.itemId).thenReturn(R.id.delete)
+        `when`(item.itemId).thenReturn(R.id.delete)
         onOptionsItemSelectedPR(item, addNote)
         verify(addNote).editText
         verify(editText).setText(eq(""))

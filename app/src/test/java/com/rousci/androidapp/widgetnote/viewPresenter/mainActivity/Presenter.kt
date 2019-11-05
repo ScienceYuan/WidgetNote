@@ -3,7 +3,6 @@ package com.rousci.androidapp.widgetnote.viewPresenter.mainActivity
 import android.app.Activity
 import android.content.Intent
 import android.view.MenuItem
-import com.rousci.androidapp.widgetnote.BuildConfig
 import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresenter.addNote.AddNote
 import com.rousci.androidapp.widgetnote.viewPresenter.passString
@@ -18,14 +17,12 @@ import org.mockito.Mockito.mock
 import org.mockito.Mockito
 import org.mockito.Mockito.verify
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
 /**
  * Created by rousci on 17-11-10.
  */
 
 @RunWith(RobolectricTestRunner::class)
-@Config(constants = BuildConfig::class, buildDir = "app/build")
 class Presenter{
     val mainActivity = mock(MainActivity::class.java)
     val intent = Intent()

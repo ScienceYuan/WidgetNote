@@ -6,23 +6,19 @@ import android.content.SharedPreferences
 import android.text.Editable
 import android.view.MenuItem
 import android.widget.EditText
-import com.rousci.androidapp.widgetnote.BuildConfig
 import com.rousci.androidapp.widgetnote.viewPresenter.singleDataPreference
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.annotation.Config
 
 /**
  * Created by rousci on 17-11-7.
  */
 
 @RunWith(RobolectricTestRunner::class)
-@Config(constants = BuildConfig::class, buildDir = "app/build")
 class Presenter{
 
     val setting = mock(Setting::class.java)
@@ -45,19 +41,19 @@ class Presenter{
 
     @Before
     fun before(){
-        Mockito.`when`(finishItem.itemId).thenReturn(android.R.id.home)
+        `when`(finishItem.itemId).thenReturn(android.R.id.home)
 
-        Mockito.`when`(setting.frequencyEditor).thenReturn(frequencyEditor)
-        Mockito.`when`(frequencyEditor.text).thenReturn(frequencyText)
-        Mockito.`when`(frequencyText.toString()).thenReturn(testFrequence.toString())
+        `when`(setting.frequencyEditor).thenReturn(frequencyEditor)
+        `when`(frequencyEditor.text).thenReturn(frequencyText)
+        `when`(frequencyText.toString()).thenReturn(testFrequence.toString())
 
-        Mockito.`when`(setting.fontSizeEditor).thenReturn(fontEditor)
-        Mockito.`when`(fontEditor.text).thenReturn(fontText)
-        Mockito.`when`(fontText.toString()).thenReturn(testFontSize.toString())
+        `when`(setting.fontSizeEditor).thenReturn(fontEditor)
+        `when`(fontEditor.text).thenReturn(fontText)
+        `when`(fontText.toString()).thenReturn(testFontSize.toString())
 
-        Mockito.`when`(setting.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE)).
+        `when`(setting.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE)).
                 thenReturn(sharePreference)
-        Mockito.`when`(sharePreference.edit()).thenReturn(editor)
+        `when`(sharePreference.edit()).thenReturn(editor)
     }
 
     @After

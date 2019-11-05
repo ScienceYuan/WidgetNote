@@ -4,7 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.rousci.androidapp.widgetnote"
         minSdkVersion 19
@@ -23,6 +23,12 @@ android {
 
     sourceSets {
         test.java.srcDirs += 'src/test/java'
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
     }
 }
 
@@ -51,7 +57,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testImplementation "org.mockito:mockito-core:2.11.0"
-    testImplementation "org.robolectric:robolectric:3.5.1"
+    testImplementation "org.robolectric:robolectric:4.3"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
 

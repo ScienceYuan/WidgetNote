@@ -1,7 +1,6 @@
 package com.rousci.androidapp.widgetnote.model
 
 import android.content.Context
-import android.util.Log
 import org.jetbrains.anko.db.*
 
 /**
@@ -26,6 +25,7 @@ fun queryAll(): List<String> {
     val data =  databasePointer!!.readableDatabase.select(noteTableName, contentName)
             .parseList(classParser<String>())
     databasePointer!!.close()
+
     return data
 }
 
