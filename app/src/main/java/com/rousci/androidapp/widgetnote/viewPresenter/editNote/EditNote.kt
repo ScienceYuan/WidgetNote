@@ -8,15 +8,19 @@ import android.view.MenuItem
 import android.widget.EditText
 
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.model.queryAll
-import com.rousci.androidapp.widgetnote.viewPresenter.notePosition
+import com.rousci.androidapp.widgetnote.model.contentName
+import com.rousci.androidapp.widgetnote.model.database
+import com.rousci.androidapp.widgetnote.model.idName
+import com.rousci.androidapp.widgetnote.model.noteTableName
+import com.rousci.androidapp.widgetnote.viewPresenter.noteId
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.select
 import org.jetbrains.anko.find
 
 class EditNote : AppCompatActivity() {
 
-    val dataSet:MutableList<String> = mutableListOf()
-    lateinit var dataSelect:String
-    lateinit var editText:EditText
+    var id = 0
+    lateinit var editText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +33,13 @@ class EditNote : AppCompatActivity() {
 
         editText = find(R.id.frequencyEditor)
 
-        val position = intent.getIntExtra(notePosition, -1)
+        this.id = intent.getIntExtra(noteId, -1)
 
-
-        dataSet.addAll(queryAll())
-        dataSelect = dataSet[position]
-
-        editText.setText(dataSelect)
+        editText.setText(database.use {
+            select(noteTableName, contentName)
+                    .whereArgs("$idName = {id}", "id" to this@EditNote.id)
+                    .parseSingle(classParser<String>())
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -51,7 +55,7 @@ class EditNote : AppCompatActivity() {
     }
 
     override fun finish() {
-        finishPR(this)
+        finishPR(this, this.id, this.editText.text.toString())
         super.finish()
     }
 }

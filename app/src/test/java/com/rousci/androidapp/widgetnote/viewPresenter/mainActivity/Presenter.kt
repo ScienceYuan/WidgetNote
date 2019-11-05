@@ -43,7 +43,7 @@ class Presenter{
 
     @Test(expected = IllegalStateException::class)
     fun onResult(){
-        onActivityResultPR(requestCode, resultCode, intent)
+        onActivityResultPR(mainActivity, requestCode, resultCode, intent)
         verify(intent).getStringExtra(passString)
     }
 

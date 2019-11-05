@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.util.Log
 import android.util.TypedValue
 import android.widget.RemoteViews
 import com.rousci.androidapp.widgetnote.R
@@ -30,17 +31,18 @@ fun updateWidgetOnTime(context: Context, appWidgetManager: AppWidgetManager, app
     else{
         editor.putInt(timeCounter, time + 1)
     }
-
     updateWidget(context, appWidgetManager, appWidgetIds)
     editor.apply()
 }
 
 fun updateWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray){
+    Log.d("track", "widget update")
     val lastNote = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getString(lastChoicedNote, null)
 
     val views = RemoteViews(context.packageName, R.layout.note_widget)
     val fontSize = context.getSharedPreferences(singleDataPreference, Context.MODE_PRIVATE).getFloat(fontSP, fontSPDefault)
-    views.setTextViewTextSize(R.id.appwidget_text, TypedValue.COMPLEX_UNIT_SP, fontSize)
+    Log.d("font size", fontSize.toString())
+    views.setTextViewTextSize(R.id.appwidget_text, TypedValue.COMPLEX_UNIT_SP, fontSize.toFloat())
     views.setTextViewText(R.id.appwidget_text, lastNote)
     val isBlackWallpaper = isBlack(getWallpaper(context))
     if (!isBlackWallpaper){
@@ -77,7 +79,6 @@ fun randomChoice(stringList:List<String>): String {
 
 fun isBlack(bitmap: Bitmap): Boolean {
     fun isBlack(color: Int): Boolean{
-        val A = (color shr 24) and 0xff
         val R = (color shr 16) and 0xff
         val G = (color shr 8) and 0xff
         val B = color and 0xff

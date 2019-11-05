@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.viewPresenter.notePosition
+import com.rousci.androidapp.widgetnote.model.Note
+import com.rousci.androidapp.widgetnote.viewPresenter.noteId
 import com.rousci.androidapp.widgetnote.viewPresenter.editNote.EditNote
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -18,13 +19,13 @@ import org.jetbrains.anko.startActivity
  * Created by rousci on 17-10-11.
  * customize a adapter
  */
-class StringRecycleAdapter(val data:List<String>, val appContext: Context): RecyclerView.Adapter<StringRecycleAdapter.StrViewHolder>() {
+class NoteRecycleAdapter(val data:List<Note>, val appContext: Context): RecyclerView.Adapter<NoteRecycleAdapter.StrViewHolder>() {
     override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: StrViewHolder, position: Int) {
-        holder.textView.text = data[position]
+        holder.textView.text = data[position].content
         holder.button.onClick {
-            appContext.startActivity<EditNote>(notePosition to position)
+            appContext.startActivity<EditNote>(noteId to data[position].id)
         }
     }
 

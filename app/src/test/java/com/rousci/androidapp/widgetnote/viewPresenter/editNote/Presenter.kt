@@ -4,12 +4,13 @@ import android.text.Editable
 import android.view.MenuItem
 import android.widget.EditText
 import com.rousci.androidapp.widgetnote.R
+import com.rousci.androidapp.widgetnote.model.Note
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import org.mockito.Mockito
 import org.mockito.Mockito.*
+import org.robolectric.annotation.Config
 
 /**
  * Created by rousci on 17-11-10.
@@ -20,18 +21,18 @@ class PresenterTest{
     val item = mock(MenuItem::class.java)
     val editText = mock(EditText::class.java)
     val text = mock(Editable::class.java)
-    val dataSelect = "dataSelect"
+    val note = Note(1, "just a test")
     @Before
     fun initFunc(){
         `when`(editNote.editText).thenReturn(editText)
         `when`(editText.text).thenReturn(text)
-        `when`(editNote.dataSelect).thenReturn(dataSelect)
+        `when`(editNote.id).thenReturn(this.note.id)
     }
 
     @Test(expected = NullPointerException::class)
     fun testFinish(){
-        finishPR(editNote)
-        verify(editNote).dataSelect
+        finishPR(editNote, this.note.id, this.note.content)
+        verify(editNote).id
         verify(editNote).editText
         verify(editText).text
     }
@@ -42,7 +43,7 @@ class PresenterTest{
         onItemSelectPR(item, editNote)
         verify(item).itemId
         verify(editNote).editText
-        verify(editText).setText(dataSelect)
+        verify(editText).setText(this.note.content)
     }
 
     @Test(expected = NullPointerException::class)

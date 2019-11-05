@@ -6,7 +6,7 @@ import org.jetbrains.anko.db.*
 
 /**
  * Created by rousci on 17-10-11.
- * a standard anko databasePointer
+ * a standard anko databaseHelper
  * anko is simple to use
  * I do not want to dear with complex api of tools
  * so I choose it
@@ -23,10 +23,12 @@ class NotesDatabaseHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, databaseN
 
         @Synchronized
         fun getInstance(ctx: Context): NotesDatabaseHelper {
-            if (instance == null) {
-                instance = NotesDatabaseHelper(ctx.getApplicationContext())
+            return if (instance == null) {
+                instance = NotesDatabaseHelper(ctx.applicationContext)
+                instance!!
+            } else {
+                instance!!
             }
-            return instance!!
         }
     }
 
@@ -45,3 +47,8 @@ class NotesDatabaseHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, databaseN
     }
 
 }
+
+val Context.database: NotesDatabaseHelper
+    get() = NotesDatabaseHelper.getInstance(this)
+
+data class Note(val id: Int, val content: String)

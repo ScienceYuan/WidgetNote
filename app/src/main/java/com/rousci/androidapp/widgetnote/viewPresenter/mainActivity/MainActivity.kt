@@ -11,8 +11,9 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.model.queryAll
-import com.rousci.androidapp.widgetnote.model.setDatabase
+import com.rousci.androidapp.widgetnote.model.*
+import org.jetbrains.anko.db.classParser
+import org.jetbrains.anko.db.select
 import org.jetbrains.anko.find
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -21,19 +22,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     lateinit var toolbar:Toolbar
     lateinit var drawer:DrawerLayout
     lateinit var actionButton:FloatingActionButton
-    val dataSet = mutableListOf<String>()
+    val dataSet = mutableListOf<Note>()
 
     fun updateRecycleView(){
         dataSet.clear()
-        dataSet.addAll(queryAll())
+        dataSet.addAll(database.use {
+            select(noteTableName, idName, contentName).parseList(classParser<Note>())
+        })
         recycleView.adapter!!.notifyDataSetChanged()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
-
-        setDatabase(this)
 
         getPermission(this)
 
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
         recycleView.layoutManager = layoutManager
-        recycleView.adapter = StringRecycleAdapter(dataSet, this)
+        recycleView.adapter = NoteRecycleAdapter(dataSet, this)
         updateRecycleView()
 
         actionButton = find<FloatingActionButton>(R.id.floatingActionButton1)
@@ -64,7 +65,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        onActivityResultPR(requestCode, resultCode, data)
+        onActivityResultPR(this, requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
     }
 

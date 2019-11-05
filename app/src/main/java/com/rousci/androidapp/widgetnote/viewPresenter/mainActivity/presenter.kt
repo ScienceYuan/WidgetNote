@@ -2,18 +2,22 @@ package com.rousci.androidapp.widgetnote.viewPresenter.mainActivity
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.support.v7.app.AlertDialog
 import android.view.MenuItem
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.model.insert
+import com.rousci.androidapp.widgetnote.model.contentName
+import com.rousci.androidapp.widgetnote.model.database
+import com.rousci.androidapp.widgetnote.model.noteTableName
 import com.rousci.androidapp.widgetnote.viewPresenter.addNote.AddNote
 import com.rousci.androidapp.widgetnote.viewPresenter.passString
 import com.rousci.androidapp.widgetnote.viewPresenter.setting.Setting
 import com.rousci.androidapp.widgetnote.viewPresenter.stringRequest
 import com.rousci.androidapp.widgetnote.viewPresenter.writeFilePermission
+import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 
@@ -28,10 +32,12 @@ fun onActionBtnClick(mainActivity: MainActivity){
     mainActivity.startActivityForResult<AddNote>(stringRequest)
 }
 
-fun onActivityResultPR(requestCode: Int, resultCode: Int, data: Intent?){
+fun onActivityResultPR(context: Context, requestCode: Int, resultCode: Int, data: Intent?){
     if ((requestCode == stringRequest) and (resultCode == Activity.RESULT_OK)){
         val note = data!!.getStringExtra(passString)
-        insert(note)
+        context.database.use {
+            insert(noteTableName, contentName to note)
+        }
     }
 }
 

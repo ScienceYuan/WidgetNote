@@ -10,7 +10,6 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import com.rousci.androidapp.widgetnote.R
-import com.rousci.androidapp.widgetnote.model.setDatabase
 import com.rousci.androidapp.widgetnote.viewPresenter.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -29,7 +28,6 @@ class Setting : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.setting)
 
-        setDatabase(this)
         val toolbar = find<Toolbar>(R.id.toolbar1)
         toolbar.setTitle(R.string.setting)
         setSupportActionBar(toolbar)
