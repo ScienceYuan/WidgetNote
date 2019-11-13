@@ -101,5 +101,6 @@ fun isBlack(bitmap: Bitmap): Boolean {
 
 fun getWallpaper(context: Context): Bitmap {
     val wallpaperManager = WallpaperManager.getInstance(context)
+    wallpaperManager.drawable
     return (wallpaperManager.drawable as BitmapDrawable).bitmap
 }

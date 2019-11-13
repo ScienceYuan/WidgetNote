@@ -5,12 +5,16 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
+
+    useLibrary 'android.test.mock'
+    useLibrary 'android.test.base'
+
     defaultConfig {
         applicationId "com.rousci.androidapp.widgetnote"
         minSdkVersion 19
         targetSdkVersion 28
-        versionCode 7
-        versionName "0.0.7 alph"
+        versionCode 8
+        versionName "0.0.8 alph"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -55,6 +59,9 @@ dependencies {
     implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
 
     testImplementation 'junit:junit:4.12'
+    testImplementation 'androidx.test:core:1.2.0'
+    testImplementation 'androidx.test:runner:1.2.0'
+    testImplementation 'androidx.test.ext:junit:1.1.1'
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testImplementation "org.mockito:mockito-core:2.11.0"
     testImplementation "org.robolectric:robolectric:4.3"

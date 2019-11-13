@@ -1,22 +1,27 @@
 package com.rousci.androidapp.widgetnote.viewPresenter.widget
 
+import android.app.WallpaperManager
 import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import androidx.test.core.app.ApplicationProvider
+import com.rousci.androidapp.widgetnote.R
 import com.rousci.androidapp.widgetnote.viewPresenter.*
 import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.*
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.RuntimeEnvironment
+import org.robolectric.Shadows.shadowOf
+import org.robolectric.shadows.ShadowBitmap
+import org.robolectric.shadows.ShadowWallpaperManager
 import kotlin.test.assertEquals
 
 /**
  * Created by rousci on 17-11-5.
- * test without dagger
- * because I haven't learned that
  */
 @RunWith(RobolectricTestRunner::class)
 class Presenter {
@@ -27,14 +32,7 @@ class Presenter {
     val widgetManager = mock(AppWidgetManager::class.java)
     val editor = mock(SharedPreferences.Editor::class.java)
     val frequencyTest = 2
-
-    companion object {
-        @BeforeClass
-        @JvmStatic
-        fun initFullTest(){
-
-        }
-    }
+    val bitmap =  Bitmap.createBitmap(1080, 1920, Bitmap.Config.RGBA_F16)
 
     @Before
     fun initSingleTest(){
@@ -48,6 +46,7 @@ class Presenter {
         `when`(sharedPreferences.edit()).thenReturn(editor)
         `when`(editor.putString(eq(lastChoicedNote), ArgumentMatchers.anyString())).thenReturn(editor)
         `when`(editor.putInt(eq(timeCounter), ArgumentMatchers.anyInt())).thenReturn(editor)
+
         doNothing().`when`(editor).apply()
     }
 
@@ -77,39 +76,5 @@ class Presenter {
         updateNoteData(context, emptyList())
         verify(context, times(2)).getSharedPreferences(eq(singleDataPreference), eq(Context.MODE_PRIVATE))
         verify(editor).putString(eq(lastChoicedNote), ArgumentMatchers.anyString())
-    }
-
-    @Test
-    fun updateWidgetNorman(){
-        updateWidget(context, widgetManager, widgetId)
-        verify(sharedPreferences).getString(eq(lastChoicedNote), ArgumentMatchers.any())
-        verify(sharedPreferences).getFloat(eq(fontSP), eq(fontSPDefault))
-        verify(widgetManager).updateAppWidget(eq(widgetId), ArgumentMatchers.any())
-    }
-
-    @Test
-    fun updateWidgetOnTimeNorman(){
-        updateWidgetOnTime(context, widgetManager, widgetId, data)
-        verify(sharedPreferences).getInt(eq(frequency), eq(defaultFrequency))
-        verify(sharedPreferences).getFloat(eq(fontSP), eq(fontSPDefault))
-        verify(sharedPreferences).getInt(eq(timeCounter), ArgumentMatchers.anyInt())
-        verify(editor).putInt(eq(timeCounter), ArgumentMatchers.anyInt())
-        verify(editor).apply()
-    }
-
-    @Test
-    fun updateWidgetOnTimeUp(){
-        `when`(sharedPreferences.getInt(eq(frequency), eq(Context.MODE_PRIVATE))).
-                thenReturn(2)
-        `when`(sharedPreferences.getInt(eq(timeCounter), eq(Context.MODE_PRIVATE))).
-                thenReturn(1)
-
-        updateWidgetOnTime(context, widgetManager, widgetId, data)
-        verify(sharedPreferences).getInt(eq(frequency), eq(defaultFrequency))
-        verify(sharedPreferences).getFloat(eq(fontSP), eq(fontSPDefault))
-        verify(sharedPreferences).getInt(eq(timeCounter), ArgumentMatchers.anyInt())
-        verify(editor, times(2)).apply()
-
-        verify(editor).putInt(eq(timeCounter), eq(0))
     }
 }

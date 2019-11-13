@@ -25,7 +25,7 @@ import org.robolectric.RobolectricTestRunner
 @RunWith(RobolectricTestRunner::class)
 class Presenter{
     val mainActivity = mock(MainActivity::class.java)
-    val intent = Intent()
+    val intent = mock(Intent::class.java)
     val requestCode = stringRequest
     val resultCode = Activity.RESULT_OK
     val item = mock(MenuItem::class.java)
@@ -41,7 +41,7 @@ class Presenter{
         verify(mainActivity).startActivityForResult<AddNote>(stringRequest)
     }
 
-    @Test(expected = IllegalStateException::class)
+    @Test
     fun onResult(){
         onActivityResultPR(mainActivity, requestCode, resultCode, intent)
         verify(intent).getStringExtra(passString)
