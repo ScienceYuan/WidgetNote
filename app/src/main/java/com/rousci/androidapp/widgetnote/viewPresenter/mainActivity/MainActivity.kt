@@ -1,4 +1,5 @@
 package com.rousci.androidapp.widgetnote.viewPresenter.mainActivity
+
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -19,14 +20,14 @@ import org.jetbrains.anko.find
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var recycleView: RecyclerView
-    lateinit var toolbar:Toolbar
-    lateinit var drawer:DrawerLayout
-    lateinit var actionButton:FloatingActionButton
+    lateinit var toolbar: Toolbar
+    lateinit var drawer: DrawerLayout
+    lateinit var actionButton: FloatingActionButton
     val dataSet = mutableListOf<Note>()
 
-    fun updateRecycleView(){
+    fun updateRecycleView() {
         dataSet.clear()
-        dataSet.addAll(database.use {
+         dataSet.addAll(database.use {
             select(noteTableName, idName, contentName).parseList(classParser<Note>())
         })
         recycleView.adapter!!.notifyDataSetChanged()
